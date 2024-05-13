@@ -1,0 +1,385 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400&display=swap');
+
+/* Estilos del spinner */
+.spinner { 
+	width: 80px;
+	height: 80px; 
+	margin-top: 43%;
+}
+
+
+
+body {
+    min-height: 100vh;
+	
+    display: block;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Red Hat Display', sans-serif;
+    margin: 0;
+    padding-top: 20px;
+	background: white;
+    margin: 0;  	 
+	
+}
+
+
+
+#content {
+    align-items: center;
+    overflow-x: hidden;
+	
+}
+
+#eye-icon {
+	position: absolute;
+	right: 10%;
+	top: 75%;
+}
+
+
+
+
+#div1 {
+	top: 8px;
+	left: 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	z-index: 9999;
+	background: linear-gradient(to top, #36addf 0%, #009fe3 100%);
+	width: 100%;
+	position: relative;
+}
+
+#div1 img {	
+	width: 100%;
+}
+#div1 span {	
+	
+}
+
+#inic {
+	position: absolute;
+	top: 21%;
+	left: 9%;
+	color: #03330f;
+	font-size: 15px;
+}
+
+#nombree {
+	font-family: 'Red Hat Display', sans-serif;
+	text-shadow: -0.1px 0 black, 0 0.1px black, 0 -0.1px black, 0 0.1px black;
+	margin-left: 18px;
+	position: absolute;
+	top: 13px;
+	left: 61px;
+	font-size: 20px;
+	color: black;
+}
+
+#botonera1 {
+	position:relative;
+	top: -100px;
+	display: flex;
+	margin-left: 6%;
+	z-index:9999999;
+}
+
+#botonera1 img {
+	width: 48%;
+}
+
+#botonera2 {
+	position:relative;
+	top: -95px;
+	display: flex;
+	margin-left: 6%;
+	z-index:9999999;
+	width: 90%;
+}
+
+#botonera2 img {
+	width: 35%;
+} 
+
+#div2 {
+	font-family: 'Red Hat Display', sans-serif;
+	margin-top: 18%;
+	background: white;
+	position: relative;
+	padding: 3% 3%;
+	width: 88%;
+	margin-left: 2.5%;
+	border-radius: 5px;
+	box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.2);
+}
+
+#enc1{
+	
+	display: flex;
+	justify-content: space-between;
+	
+}
+#enc2{
+	margin-top: 13%;
+}
+#enc3{
+	margin-top: 6%;	
+}
+#enc3 img{
+	width: 100%;
+	
+}
+
+#promociones {
+	margin-top: 4%;
+	width: 100%; 
+	position: relative;
+	top: -95px;
+	z-index: 99;
+}
+
+#ultima {
+	margin-top: 4%;
+	width: 100%; 
+	position: relative;
+    margin-top: -9%;
+}
+
+
+#div2 span {
+	
+	font-size: 14px; 
+	color:black;
+}
+
+
+#imgPie {
+	width: 100%;
+	position: fixed; 
+	bottom: 2%;
+	
+}
+
+.pie {
+	position: fixed;
+	bottom: 0;
+	z-index:9999	
+}
+
+
+
+
+#transferencias{
+	position: relative;
+	top: 0;
+	left: 0;
+	margin-top:1%; 
+	padding-bottom: 1%;
+	display: grid;
+	
+}
+
+#ico {
+	border-radius: 50%;
+	letter-spacing: 1px;
+	margin-left: 8%;
+	margin-right: 7%;
+	width: 12%;
+	height: 12%;
+	padding: 8px;
+	align-items: center;
+	display: flex;
+	background: #e4ecf7f0;
+}
+
+#icoIMG {
+	border: solid 1px #68666675;
+	/* padding: 10px; */
+	border-radius: 50%;
+	letter-spacing: 1px;
+	margin-left: 8%;
+	margin-right: 4%;
+	height: 44px;
+}
+
+
+#actividades {
+	margin-top: -28%;
+	background: white;
+	position: relative;
+	padding: 5% 3%;
+	width: 94%;
+	margin-left: 0%; 
+}
+
+
+
+
+#transferencias span {	
+	font-size: 14px;
+	color:#424040;
+}
+
+
+#der {
+	
+	margin-right: 4%;
+}
+#izq {
+	display: flex;
+	align-items: center;
+}
+
+#izqText{
+	white-space: nowrap;
+	display: inline;
+}
+
+/*  Solapa deslizable para movimientos de cuenta. */
+
+.sliding-panel {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+	border-top-left-radius: 30px;
+	border-top-right-radius: 30px;
+    background-color: #fff;
+    overflow: hidden;
+    transition: height 0.5s ease;
+	z-index:99999999999;
+}
+
+.sliding-panel p {
+    margin: 20px;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+	z-index:999999999;
+}
+
+#linea-superior { 
+	padding: 4px;
+	margin: 5px auto;
+	width: 17%;
+	position: relative;
+	border-radius: 50px;
+	background: #cccccc91;
+	margin-top: 10px;
+}
+
+ 
+
+#desti {
+	position: relative;
+	margin-top: 22px;
+	margin-left: 21px;
+	display: flex;
+	align-items: center;
+	width: 100%;
+}
+
+#logo {
+	background: aliceblue;
+	width: 52px;
+	padding: 1px;
+	height: 52px;
+	border-radius: 50px;
+}
+
+#in {
+	position: relative;
+	top: -5px;
+	left: -4px;
+	color: #082cec;
+}
+
+#NombreYfecha {
+	position: relative;
+	left: -6px;
+}
+
+#Destiname{ 
+	position: relative;
+	top: 13px;
+	letter-spacing: 1px;
+	font-size: 14px;
+ 
+}
+
+#SinConfirmacion{ 
+	width: 100%; 
+}
+
+#fechaCont {
+	position: relative;
+	top: -8px;
+	font-size: 12px;
+	color: gray;
+}
+
+#montoContenedor {
+	position: fixed;
+	right: 3%;
+	font-size: 15px;
+}
+
+
+#cuentaRemitente {
+	display: flex;
+	margin-left: 37px;
+	align-items: center;
+	letter-spacing: 1px;
+	font-size: 13px;
+}
+
+
+#imagenLogoRemi {
+	width: 26px;
+	height: 26px;
+	margin-right: 7px;
+}
+
+#cuentaDestino {
+	display: flex; 
+	margin-left: 37px;
+	align-items: center;
+	letter-spacing: 1px;
+	font-size: 13px;
+}
+
+#imagenLogo {
+	width: 26px;
+	height: 26px; 
+	margin-right: 29px;	
+	border-radius: 50px;
+}
+
+#fechaComplet {
+	margin-top: 20px;
+	margin-left: 92px;
+	font-size: 13px;
+	color: gray;
+}
+
+
+#botonesMov {
+	width: 100%;
+	margin-top: 14px;
+}
+
+#otrosMov {
+	width: 100%;
+	position: relative;
+	top: -12px;
+}

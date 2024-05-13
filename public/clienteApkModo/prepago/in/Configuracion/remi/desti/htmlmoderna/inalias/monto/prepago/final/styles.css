@@ -1,0 +1,284 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400&display=swap');
+
+/* Estilos del spinner */
+.spinner {
+	margin: 0 auto;
+	width: 15px;
+	height: 15px;
+	border: 2px solid #f3f3f3;
+	border-top: 2px solid #3498db;
+	border-radius: 50%;
+	animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+
+
+body {
+	display: block;
+	align-items: center;
+	justify-content: center;
+	font-family: 'Red Hat Display', sans-serif;
+	margin: 0;
+	padding: 0;
+	background: #0447b8;
+	height: 100vh;
+
+}
+
+#content {
+	display: flex;
+	overflow: hidden;
+	justify-content: center;
+	align-items: center;
+}
+
+
+#enca {
+	width: 100%;
+}
+
+
+#NombreyMensaje {
+	font-family: 'Red Hat Display', sans-serif;
+	text-align: center;
+	color: white;
+	position: relative;
+	top: -2%;
+}
+
+#NombreyMensaje h1 {
+	font-size: 15px;
+}
+
+#NombreyMensaje span {
+	font-size: 15px;
+}
+
+#ContenedorMonto {
+	text-align: center;
+	margin-top: 4vh;
+}
+
+#ContenedorMonto img {
+	display: inline-block;
+	width: 18px;
+	position: relative;
+	bottom: 3px;
+}
+
+#ContenedorMonto h1 {
+	display: inline-block;
+	font-family: 'Red Hat Display', sans-serif;
+	color: white;
+	font-size: 36px;
+}
+
+
+
+
+
+
+
+
+
+#cuentas {
+	color: white;
+	margin-left: 17%;
+	margin-top: 4vh;
+}
+
+#cuentas a {
+	font-size: 15px;
+
+}
+
+#cuentas span {
+	margin-left: 9%;
+}
+
+#logoYcuenta {
+	display: flex;
+	position: relative;
+	margin-top: 0.5%;
+	margin-bottom: 0.5%;
+}
+
+#imagenLogo {
+	width: 24px;
+	position: relative;
+	border-radius: 50px;
+	height: 20px;
+}
+
+#cbuData {
+	margin-left: 9%;
+}
+
+#cbuData a {
+	font-size: 12px;
+}
+
+#encuestaTxt {
+	color: white;
+	font-size: 15px;
+	position: relative;
+	margin-top: 4vh;
+	position: relative;
+	left: 21%;
+}
+
+#encuesta {
+	width: 100%;
+	position: relative;
+	top: -1.5%;
+}
+
+#btnCompartir {
+	width: 100%;
+	position: relative;
+	top: -6px;
+}
+
+#btnInicio {
+	color: white;
+	font-size: 15px;
+	position: relative;
+	left: 42%;
+	top: -6px;
+}
+
+
+
+
+
+
+/* ANIMACION NOTIFICACION */
+
+
+.circle-container {
+	margin-left: 2%;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	z-index: 99999999;
+	width: 96%;
+}
+
+.conte {
+	opacity: 0;
+	position: relative;
+	border-radius: 19px;
+	height: 58px;
+	display: flex;
+	animation: aparecer 0.3s 4s linear forwards;
+	margin-top: 8%;
+	width: auto;
+	justify-content: space-between;
+}
+
+
+.circle2-image {
+	width: 25px;
+	height: 25px;
+	border-radius: 50%;
+	margin-left: 3px;
+	margin-top: 10px;
+}
+
+.circle2 {
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	margin-left: 2%;
+	margin-top: 2%;
+	margin-right: 2%;
+}
+
+
+
+.text {
+	font-family: 'Red Hat Display', sans-serif;
+	padding-top: 11px;
+	padding-right: 33px;
+	font-size: 14px;
+	color: white;
+	white-space: nowrap;
+	overflow: hidden;
+	margin-left: 12%;
+	position: absolute;
+}
+
+.logo2 {
+	margin-left: 4%;
+	margin-right: 4%;
+	margin-top: 5%;
+}
+
+.logo2 img {
+	width: 45px;
+	height: 25px;
+}
+
+#horaNoti {
+	font-size: 10px;
+	color: #b9b9b9;
+}
+
+#des {
+	color: #b9b9b9;
+}
+
+
+@keyframes aparecer {
+	0% {
+		opacity: 0;
+		background-color: #0000;
+
+	}
+
+	100% {
+		opacity: 1;
+		background-color: #000000d4;
+		width: auto;
+	}
+}
+
+
+
+
+
+
+.fade-out {
+	animation: chau 0.5s !important;
+
+
+}
+
+
+@keyframes chau {
+	0% {
+		opacity: 1;
+		left: 0%;
+	}
+
+	100% {
+		opacity: 0;
+		left: 100%;
+	}
+}
+
+#botones{
+ position: absolute;
+ bottom: 0;
+
+}

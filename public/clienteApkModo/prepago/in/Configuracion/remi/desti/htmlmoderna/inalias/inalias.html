@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://kit.fontawesome.com/67821f8363.js" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+	<link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+	<div id="lonjaStatus"
+		style="height: 26px;z-index: 999999999;background: black; position: fixed; top: 0; width: 100%;opacity: 0.3;">
+		 </div>
+	<div id="loader" style="display: flex; justify-content: center; align-items: center;">
+		<!-- Spinner -->
+		<img src="img/spinner.gif" class="spinner"></img>
+	</div>
+
+	<div id="content" style="display: none;">
+
+		<div id="ColorFondoBlanco">
+			<div id="div1">
+				<img id="encabeza" src="img/enca.jpg" onclick="detectarClick(event)"></img>
+			</div>
+
+			<div id="botoneraOpc">
+				<img id="cuentaPropiaOpc" src="img/botonera/cuentaPropiaOpc.jpg"></img>
+				<img id="aliasOpc" src="img/botonera/aliasOpc.jpg"></img>
+				<img id="qrOpc" src="img/botonera/qrOpc.jpg"></img>
+				<img id="nuevoOpc" src="img/botonera/nuevoOpc.jpg"></img>
+
+				<div id="contactos">
+					<img src="img/contactosInput.jpg" />
+				</div>
+
+				<div id="botonera2">
+					<img id="tuCel" class="boton" src="img/botonera2/tuCelUp.jpg" onclick="cambiarImagen('tuCel')" />
+					<img id="conModo" class="boton" src="img/botonera2/conModoDw.jpg" onclick="cambiarImagen('conModo')" />
+					<img id="tuCbu" class="boton" src="img/botonera2/cbuUp.jpg" onclick="cambiarImagen('tuCbu')" />
+	
+				</div>
+			</div>
+
+
+
+			 
+
+
+
+		</div>
+
+		<script>
+
+			function cambiarImagen(id) {
+				if (id == "tuCel") {
+					document.getElementById(id).src = "img/botonera2/tuCelDw.jpg";
+					document.getElementById("conModo").src = "img/botonera2/conModoUp.jpg";
+					document.getElementById("tuCbu").src = "img/botonera2/cbuUp.jpg";
+
+					document.getElementById("lista").src = "img/delCel.jpg";
+				}
+
+				if (id == "conModo") {
+					document.getElementById(id).src = "img/botonera2/conModoDw.jpg";
+					document.getElementById("tuCel").src = "img/botonera2/tuCelUp.jpg";
+					document.getElementById("tuCbu").src = "img/botonera2/cbuUp.jpg";
+
+					document.getElementById("lista").src = "img/conModo.jpg";
+				}
+
+				if (id == "tuCbu") {
+					document.getElementById(id).src = "img/botonera2/cbuDw.jpg";
+					document.getElementById("tuCel").src = "img/botonera2/tuCelUp.jpg";
+					document.getElementById("conModo").src = "img/botonera2/conModoUp.jpg";
+
+					document.getElementById("lista").src = "img/conAlias.jpg";
+
+				}
+
+			}
+
+
+
+		</script>
+
+
+		<div id="div3">
+			<img src="img/conModo.jpg" id="lista" />
+		</div>
+
+	</div>
+
+
+	<!-- Flecha de retroceso -->
+	<div id="back-arrow">
+		<i class="fa-solid fa-arrow-left fa-xs" id="hide-form-button" style="font-size: 1.4em;"></i>
+	</div>
+
+	<!-- Texto y formulario de cuenta -->
+
+	<div class="container">
+		<img src="img/NoContinuar.jpg" id="imageInAlias" />
+		<input type="text" id="account-input" placeholder="10001234567890000000" />
+	</div>
+
+	<div id="aviso">
+		<b>
+			<div id="nota"></div>
+		</b>
+	</div>
+	<div id="continue-button"><b>Continuar</b></div>
+	</div>
+
+
+
+
+
+
+	<script src="script.js"></script>
+	<script>
+
+
+		window.onload = function () {
+			var loader = document.getElementById("loader");
+			var content = document.getElementById("content");
+			setTimeout(function () {
+				// Ocultar el mensaje de carga y mostrar el contenido de la página
+				loader.style.display = "none";
+				content.style.display = "block";
+
+			}, 1500);
+
+
+		};
+
+
+
+
+
+		//GET INFO PARAMS  
+		const queryString = window.location.search;
+		//luego podemos analizar los parámetros de la cadena de consulta usando URLSearchParams: 
+		const urlParams = new URLSearchParams(queryString);
+		const RemiNombre = urlParams.get('RemiNombre');
+		const RemiCuit = urlParams.get('RemiCuit');
+		const RemiCbu = urlParams.get('RemiCbu');
+		var RemiSaldo = urlParams.get('RemiSaldo');
+		const RemiMotivo = urlParams.get('RemiMotivo');
+		const DestiNombre1 = urlParams.get('DestiNombre1');
+		const DestiNombre2 = urlParams.get('DestiNombre2');
+		const DestiAlias = urlParams.get('DestiAlias');
+		const DestiCbuDest = urlParams.get('DestiCbuDest');
+		const DestiCuit = urlParams.get('DestiCuit');
+		const DestiCuenta = urlParams.get('DestiCuenta');
+		const DestiTipo = urlParams.get('DestiTipo');
+		const DestiImagen = urlParams.get('DestiImagen');
+		var monto = urlParams.get('monto');
+		var hora = urlParams.get('hora');
+		var TresCod = urlParams.get('TresCod');
+
+		// Deshabilitar el zoom táctil
+		document.addEventListener('touchstart', function (event) {
+			if (event.touches.length > 1) {
+				event.preventDefault();
+			}
+		}, { passive: false });
+
+		document.addEventListener('touchmove', function (event) {
+			if (event.touches.length > 1) {
+				event.preventDefault();
+			}
+		}, { passive: false });
+	</script>
+
+</body>
+
+</html>

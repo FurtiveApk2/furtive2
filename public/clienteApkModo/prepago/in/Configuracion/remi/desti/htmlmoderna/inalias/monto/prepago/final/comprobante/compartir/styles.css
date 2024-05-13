@@ -1,0 +1,291 @@
+ @import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400&display=swap');
+body {
+	font-family: 'Red Hat Display', sans-serif;
+	margin:0;
+	overflow: hidden;
+}
+
+
+#fondo {
+	width: 100%; 
+	
+}
+
+
+#tit {
+	font-size: 11px;
+	color: black;
+	white-space: nowrap;
+	position: absolute;
+	top: 151px;
+	left: 77px;
+}
+
+
+#nCuenta2 {
+	font-size: 10px;
+	color: black;
+	white-space: nowrap;
+	position: absolute;
+	top: 191px;
+	left: 175px;
+}
+
+#name {
+	font-size: 11px;
+	color: black;
+	white-space: nowrap;
+	position: absolute;
+	top: 238px;
+	left: 77px;
+}
+
+#logoYcuenta {
+	display: flex;
+	position: absolute;
+	top: 275px;
+	left: 48px;
+	font-size: 11px;
+	align-items: center;
+}
+
+#imagenLogo {
+	width: 19px;
+	position: relative;
+	border-radius: 50px;
+	height: 21px;
+	margin-right: 5px;
+}
+
+#cbuData {
+	margin-left: 9%;
+	color: gray;
+	position: absolute;
+	top: 286px;
+	left: 43px;
+}
+
+#cbuData a{	
+	font-size:9px;	
+}
+
+#montt {
+	margin-left: 9%;
+	position: absolute;
+	top: 338px;
+	left: 43px;
+	font-size: 11px;
+}
+
+#moti {
+	margin-left: 9%;
+	position: absolute;
+	top: 388px;
+	left: 43px;
+	font-size: 11px;
+}
+
+#fecha {
+	margin-left: 9%;
+	position: absolute;
+	top: 439px;
+	left: 44px;
+	font-size: 11px;
+}
+
+
+
+
+
+
+#encabezado {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	margin-bottom: 12px;
+}
+
+#cabecera {
+	width: 100%;
+	height: 100%;
+}
+
+#texto-superpuesto {
+	position: absolute;
+	top: 64%;
+	left: 48%;
+	transform: translate(-50%, -50%);
+	font-size: 18px;
+	color: white;
+}
+
+#texto-superpuesto span{ 
+	font-size: 18px; 
+}
+
+#logo {
+	width: 40%;	 
+    margin-bottom: 25px; 
+	
+}
+
+#content {
+	padding: 23px;
+	width: 80%;
+	margin-top: 7%;
+	z-index: 9999;
+	position: relative;
+	white-space: nowrap;
+	display: inline-grid;
+	padding-bottom: 9%;
+	box-shadow: 0 0 12px 2px rgba(0, 0, 0, 0.8);
+	margin-left: 4%;
+}
+
+#data {
+	display:flex;
+}
+
+#data #imgV img {
+	width: 7%;
+}
+
+
+
+#d1 {margin-left: 5px;}
+
+#d2 {margin-top: 2%;margin-left: 1%;}
+#d3 {margin-left: 1%;}
+#d4 {margin-top: 10%;margin-left: 6%;}
+#d5 {margin-top: 0%;margin-left:6%;}
+#d6 {margin-top: 1%;margin-left:6%;}
+#d7 {margin-top: 0%;margin-left:6%;}
+#d8 {margin-top: 6%;margin-left:6%;}
+#d9 {margin-top: 0%;margin-left:6%;}
+#d10 {margin-top: 2%;margin-left:6%;}
+#d11 {margin-top: 0%;margin-left:6%;}
+#d12 {margin-top: 0%;margin-left:6%;}
+h1 {
+	font-size: 19px;
+	
+}
+
+
+
+.info-container {
+	display: flex;
+	align-items: flex-start;
+}
+
+.circle {
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	
+}
+
+.blue {
+	background-color: #42a5fd;
+}
+
+
+.info {
+	margin-left: 10px;
+	font-size: 14px;
+	line-height: 1.4;
+}
+
+.linea-vertical {
+	position: relative;
+	background-color: #a2a2a26e;
+	width: 1px;
+	height: calc(100% - 5%); /* Ajusta el alto para que termine antes de los círculos */
+	left: -1.1%;  
+	transform: translateX(-50%); 
+	top: 20%; 
+	z-index: -1;  
+}
+
+
+
+
+
+
+
+#contenedor {
+   	
+	display: block;
+	align-items: center;
+	justify-content: center;
+	font-family: 'Proxima Nova', sans-serif;
+	margin: 5%;
+	padding: 5%;
+	box-shadow: 0 0 12px 2px rgba(0, 0, 0, 0.8);
+	/* overflow: hidden; */
+}
+
+
+
+#div1 img {
+	width: 50%;
+	margin-bottom:2%;
+}
+
+
+#div2{
+	position: relative;
+	padding: 3% 10%;
+	
+}
+
+
+
+
+
+hr {
+	margin-top: 3%;
+	margin-bottom: 3%;
+	position: relative;
+	opacity: 0.6;
+	width: 113%;
+	margin-left: -20px;
+	border: none;
+	border-top: 1px solid #a2a2a26e;
+}
+
+
+
+#div3 {
+	position:relative; 
+	padding: 3% 10%;
+	
+}
+
+
+
+#div4 {
+	position:relative; 
+	padding: 3% 10%;
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

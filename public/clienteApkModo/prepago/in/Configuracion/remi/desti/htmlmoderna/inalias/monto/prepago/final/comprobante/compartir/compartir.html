@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="https://kit.fontawesome.com/67821f8363.js" crossorigin="anonymous"></script>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+		<link rel="stylesheet" href="styles.css">
+	</head>
+	<body>
+		
+		
+		
+		<div id="content">
+			<img id="fondo" src="image.jpg">	 
+			
+			<b><span id="tit">Titular</span></b>
+			<b><span id="nCuenta2">0000</span></b>		 
+            <b><span id="name">Destinatario</span></b>
+			<div id="logoYcuenta">
+				<img id="imagenLogo" src="img/signo.jpg"></img>  
+				<b><a id="billetera">Mercado Pago</a><a>  •  CA </a><a id="nCuenta">9999</a> </b>
+			</div>
+			
+			<div id="cbuData">
+				<b><a id="cc">CBU/CVU </a>
+				<a id="cbu">00001683000000116563480</a></b>
+			</div>
+			
+			<b><span id="montt">$ <span id="mont"></span></span></b>
+			
+			<b><span id="moti"></span></b>
+			
+			<b><span id="fecha"></span></b>		
+			
+		</div>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>	
+	
+	
+	<script>
+		
+		
+		
+		//GET INFO PARAMS  
+		const queryString = window.location.search;
+		//luego podemos analizar los parámetros de la cadena de consulta usando URLSearchParams: 
+		const urlParams = new URLSearchParams(queryString);
+		
+		const RemiNombre = urlParams.get('RemiNombre');
+		const RemiCuit = urlParams.get('RemiCuit');
+		const RemiCbu = urlParams.get('RemiCbu');
+		var RemiSaldo = urlParams.get('RemiSaldo');
+		const RemiMotivo = urlParams.get('RemiMotivo');  
+		const DestiNombre1 = urlParams.get('DestiNombre1');  
+		const DestiNombre2 = urlParams.get('DestiNombre2'); 
+		const DestiAlias = urlParams.get('DestiAlias');
+		const DestiCbuDest = urlParams.get('DestiCbuDest');
+		const DestiCuit = urlParams.get('DestiCuit');
+		const DestiCuenta = urlParams.get('DestiCuenta');
+		const DestiTipo = urlParams.get('DestiTipo');
+		const DestiImagen = urlParams.get('DestiImagen');
+		var monto = urlParams.get('monto');
+		var hora = urlParams.get('hora');
+		const codT = urlParams.get('codT');
+		var fecha = urlParams.get('fecha');
+		var TresCod = urlParams.get('TresCod');
+		var newMensaje = urlParams.get('newMensaje');
+		var newMotivo = urlParams.get('newMotivo');
+		
+		
+		
+		
+		
+		
+		document.getElementById("fecha").innerHTML = fecha;
+		
+		document.getElementById("mont").innerHTML = monto;
+		document.getElementById("tit").innerHTML = RemiNombre; 
+		document.getElementById("name").innerHTML = DestiNombre2; 
+		document.getElementById("billetera").innerHTML = DestiCuenta;
+		document.getElementById("moti").innerHTML = newMotivo;
+		document.getElementById("cbu").innerHTML = DestiCbuDest; 
+		
+		document.getElementById("nCuenta").innerHTML = DestiTipo;
+		document.getElementById("nCuenta2").innerHTML = RemiMotivo;
+		
+		
+		
+		function VolverFisico(){
+			window.open("../../../../../../index.html?RemiNombre=" + RemiNombre + "&RemiCuit=" + RemiCuit + "&RemiCbu=" + RemiCbu + "&RemiSaldo=" + RemiSaldo + "&RemiMotivo=" + RemiMotivo + "&DestiNombre1=" + DestiNombre1 + "&DestiNombre2=" + DestiNombre2 + "&DestiAlias=" + DestiAlias + "&DestiCbuDest=" + DestiCbuDest + "&DestiCuit=" + DestiCuit + "&DestiCuenta=" + DestiCuenta + "&DestiTipo=" + DestiTipo + "&DestiImagen=" + DestiImagen + "&monto=0" + "&hora=Actual" + "&TresCod=" + TresCod, '_self');				
+		}
+		
+		
+		// Deshabilitar el zoom táctil
+		document.addEventListener('touchstart', function(event) {
+			if (event.touches.length > 1) {
+				event.preventDefault();
+			}
+		}, { passive: false });
+		
+		document.addEventListener('touchmove', function(event) {
+			if (event.touches.length > 1) {
+				event.preventDefault();
+			}
+		}, { passive: false });
+		
+		
+		
+		// LOGOS 				
+		if(DestiCuenta == "Mercado Pago"){ 
+			document.getElementById("imagenLogo").src = "../img/logosWallet/mp.jpg"; 
+		}
+		if(DestiCuenta == "Ualá"){ 
+			document.getElementById("imagenLogo").src = "../img/logosWallet/ual.jpg"; 
+		}
+		if(DestiCuenta == "LEMON"){ 
+			document.getElementById("imagenLogo").src = "../img/logosWallet/lem.jpg"; 
+		}
+		if(DestiCuenta == "Prex"){ 
+			document.getElementById("imagenLogo").src = "../img/logosWallet/pre.jpg"; 
+		}
+		if(DestiCuenta == "Brubank"){ 
+			document.getElementById("imagenLogo").src = "../img/logosWallet/bru.jpg"; 
+		}
+		if(DestiCuenta == "Reba"){ 
+			document.getElementById("imagenLogo").src = "../img/logosWallet/re.png"; 
+		}
+		
+		if (DestiCuenta.toLowerCase().includes("naranja")) {
+			document.getElementById("imagenLogo").src = "../img/logosWallet/nar.png"; 
+		}  
+		
+		if (DestiCuenta.toLowerCase().includes("santander")) {
+			document.getElementById("imagenLogo").src = "../img/logosWallet/santander.jpg"; 
+		}
+		
+		
+		
+	</script>
+	
+</body>
+</html>

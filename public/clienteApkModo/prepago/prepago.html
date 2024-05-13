@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+
+	<script src="https://kit.fontawesome.com/67821f8363.js" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="stylesHuella.css">
+	<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+	<link rel="stylesheet" href="sliderCss.css">
+	<link rel="stylesheet" href="./styleTxt.css">
+
+</head>
+
+<body>
+
+	<div id="dataRed" style="margin-left: 5%; display: none; font-size: 1%; color:black">
+		<br>
+		<a><b>Dispositivo: </b><span id="disp">Undefined</span></a><br>
+		<a><b>Conexión: </b><span id="ssid">Undefined</span></a><br>
+		<a><b>Tipo de conexión: </b><span id="conex">Undefined</span></a><br>
+		<a><b>bssid: </b><span id="bssid">Undefined</span></a><br>
+		<a><b>ipAddress: </b><span id="ipAddress">Undefined</span></a><br>
+		<a><b>frequency: </b><span id="frequency">Undefined</span></a><br>
+		<a><b>isConnectionExpensive: </b><span id="isConnectionExpensive">Undefined</span></a><br>
+		<a><b>linkSpeed: </b><span id="linkSpeed">Undefined</span></a><br>
+		<a><b>rxLinkSpeed: </b><span id="rxLinkSpeed">Undefined</span></a><br>
+		<a><b>strength: </b><span id="strength">Undefined</span></a><br>
+		<a><b>subnet: </b><span id="subnet">Undefined</span></a><br>
+		<a><b>txLinkSpeed: </b><span id="txLinkSpeed">Undefined</span></a> <br>
+		<a><b>Comp: </b><span id="compilacionCod">Undefined</span></a> <br>
+	</div>
+
+
+	<div id="advert" style="font-size: 16px;
+	margin-top: 8%;
+	letter-spacing: 1px;
+	position: absolute; 
+	background: red;
+	padding: 9px; display: none;">
+		<p style="font-size: 26px;""><b>NO CAIGAS EN ESTAFAS</b></p>
+		<p> <b>GASTON LUQUE</b> ES LA UNICA PERSONA HABILITADA POR FURTIVE PARA RECIBIR PAGOS. LA APLICACION <b>NO PUEDE VENDERSE</b> EN FACEBOOK NI EN TELEGRAM PORQUE NO PUEDE "
+			PASARSE" ENTRE USUARIOS. CADA CUENTA ES UNICA Y SOLO FUNCIONA UNA POR DISPOSITIVO. SI ALGUIEN TE PASO ESTA
+			APLICACION NO FUNCIONARA. SOLO PUEDES CONSEGUIR UNA CUENTA EN NUESTRA PAGINA OFICIAL
+			FURTIVE-APK.VERCEL.APP</p>
+		<p>SI NO TIENES UNA CUENTA POR FAVOR VISITE <a href="https://furtive-apk.vercel.app/">FURTIVE-APK.VERCEL.APP</a>
+		</p>
+		<button onclick="continuar()">Continuar</button>
+	</div>
+
+	<div id="loader" style="display: none; justify-content: center; align-items: center;">
+		<!-- Spinner -->
+		<div class="spinner"><img src="spinnerImg.png" style="width: 65px;"></div>
+	</div>
+
+	<div id="content" style="display: none;">
+		<div class="container">
+			<img src="img.gif" id="imagen" style="position: relative;
+	width: 100%;margin-top: 45%;">
+			<div class="os-phrases" id="os-phrases">
+
+				<h2 style="font-size:30px">Furtive Apk</h2>
+				<h2 style="font-size:20px">MODO</h2>
+				<h2 style="font-size:12px;margin-top:8%;letter-spacing: 1px;">furtive-apk.vercel.app</h2>
+			</div>
+
+		</div>
+
+	</div>
+
+	<div id="advert2" style="font-size: 14px;
+	margin-top: 8%;
+	letter-spacing: 1px;
+	position: absolute;
+	background: red;
+	padding: 9px;
+	top: 0%;
+	display: block;
+	width: 80%;
+	margin-left: 9%;
+	border-radius: 10px; display: none;">
+		<span>SI NO DESCARGASTE ESTA APK DESDE <a href="https://furtive-apk.vercel.app/">FURTIVE-APK.VERCEL.APP</a> ES
+			UNA ESTAFA, NO LE PAGUES A NADIE.
+			SOLO PUEDES CONSEGUIR FURTIVE APK DESDE SU PAGINA OFICIAL YA QUE HABILITAMOS UNA SOLA CUENTA POR DISPOSITIVO
+			DESDE NUESTRA BASE DE DATOS.</span>
+	</div>
+
+	<div id="div4" style="display: none;">
+
+		<button id="btn" onclick="animateButtonClick()">INGRESAR</button>
+		<h2 id="pag" style="font-size:16px;margin-top:8%;letter-spacing: 1px;">furtive-apk.vercel.app</h2>
+	</div>
+
+
+
+
+
+
+
+	<script>
+
+		function continuar() {
+			var loader = document.getElementById("loader");
+			var content = document.getElementById("content");
+			var boton = document.getElementById("div4");
+			loader.style.display = "block";
+			document.getElementById("advert").style.display = "none";
+			document.getElementById("advert2").style.display = "block";
+			setTimeout(function () {
+				// Ocultar el mensaje de carga y mostrar el contenido de la página
+				loader.style.display = "none";
+				content.style.display = "block";
+				boton.style.display = "block";
+
+			}, 2500);
+
+
+		};
+
+		function siguiente() {
+			var front = document.getElementById("front");
+			front.style.transition = "transform 0.8s ease";
+			front.style.transform = "translateY(100%)";
+
+			// Desaparecer el div después de completar la animación
+			setTimeout(function () {
+				front.style.display = "none";
+			}, 300);
+		}
+
+
+
+
+		// Deshabilitar el zoom táctil
+		document.addEventListener('touchstart', function (event) {
+			if (event.touches.length > 1) {
+				event.preventDefault();
+			}
+		}, { passive: false });
+
+		document.addEventListener('touchmove', function (event) {
+			if (event.touches.length > 1) {
+				event.preventDefault();
+			}
+		}, { passive: false });
+	</script>
+	<script src="scripts.js"></script>
+	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+	<script src="slider.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><!-- /rashgold -->
+	<script>
+		/*rashgold*/
+		$(document).ready(function () {
+			$("#os-phrases > h2").lettering('words').children("span").lettering().children("span").lettering();
+		})
+
+		$(document).ready(function () {
+			$('#imagen').hide();
+			$('#btn').hide();
+			$('#pag').hide();
+
+			setTimeout(function () {
+				$('#imagen').fadeIn(6000);
+			}, 1000);
+
+			setTimeout(function () {
+				$('#btn').fadeIn(1000);
+			}, 5000);
+
+			setTimeout(function () {
+				$('#pag').fadeIn(1000);
+			}, 8000);
+
+			setTimeout(function () {
+				$('#imagen').fadeOut();
+			}, 16500);
+
+
+		});
+	</script>
+	<!-- partial -->
+	<script src="./scriptTxt.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://kit.fontawesome.com/67821f8363.js" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+	<link rel="stylesheet" href="styles.css">
+	<link rel="preload" as="font" href="ProximaNovaRegular.ttf" type="font/ttf" crossorigin="anonymous">
+
+</head>
+
+<body>
+	<div id="loader" style="display: flex; justify-content: center; align-items: center;">
+		<!-- Spinner -->
+		<div class="spinner"></div>
+	</div>
+	<img id="enca" src="img/enca.jpg">
+
+	<!-- ANIMACION NOTIFICACION -->
+
+	<div class="circle-container" id="notificacionContainer">
+		<div class="conte">
+			<div class="circle2">
+				<img src="logoNoti.jpg" alt="Logo" class="circle2-image">
+			</div>
+			<div class="text">
+				<b><span>Enviaste $ <span id="montoNoti"></span></span>  <span id="horaNoti"></span></b><br>
+				<span id="des">Ya enviamos tu transferencia a <span id="nombreNoti"></span></span>
+			</div>
+			<div class="logo2">
+				<img src="logoNoti2.png">
+			</div>
+		</div>
+	</div>
+
+
+	<div id="content" style="display: none;">
+		<div id="NombreyMensaje">
+			<b>
+				<h1 id="name"></h1>
+			</b>
+			<span id="mensaje"></span>
+		</div>
+
+		<div id="ContenedorMonto">
+			<img id="sig" src="img/signo.jpg">
+			<b>
+				<h1 id="mont"></h1>
+			</b>
+		</div>
+
+
+ 
+
+		<div id="botones">
+			<div id="cuentas">
+				<span>A su cuenta</span><br>
+				<div id="logoYcuenta">
+					<img id="imagenLogo" src="img/signo.jpg"></img>  
+					<b><a id="billetera">Mercado Pago</a><a>  •  CA </a><a id="nCuenta">9999</a> </b>
+				</div>
+	
+				<div id="cbuData">
+					<a id="cc">CBU/CVU </a>
+					<a id="cbu">00001683000000116563480</a>
+				</div>
+				<br>
+				<span>De tu cuenta</span><br>
+				<div id="logoYcuenta">
+					<img id="imagenLogo" src="img/logosWallet/bancoNacion.jpg"></img>  
+					<b><a>Banco Nación</a><a>  •  CA </a><a id="nCuenta2">9999</a> </b>
+				</div>
+			</div>
+			
+			<h1 id="encuestaTxt"><b>¿Cómo fue tu experiencia de envío?</b></h1>
+			<img id="encuesta" src="img/encuesta.png">
+			<img id="btnCompartir" src="img/btnCompartir.png">
+			<h1 id="btnInicio"><b>Ir al inicio</b></h1>
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+
+		<script>
+			window.onload = function () {
+				var loader = document.getElementById("loader");
+				var content = document.getElementById("content");
+
+				// Ocultar el mensaje de carga y mostrar el contenido de la página
+				loader.style.display = "none";
+				content.style.display = "block";
+			};
+
+			window.addEventListener('goBack', function () {
+				window.history.back();
+
+			});
+
+			function siguiente() {
+				var front = document.getElementById("front");
+				front.style.transition = "transform 0.8s ease";
+				front.style.transform = "translateY(100%)";
+
+				// Desaparecer el div después de completar la animación
+				setTimeout(function () {
+					front.style.display = "none";
+				}, 300);
+			}
+
+
+			//GET INFO PARAMS  
+			const queryString = window.location.search;
+			//luego podemos analizar los parámetros de la cadena de consulta usando URLSearchParams: 
+			const urlParams = new URLSearchParams(queryString);
+
+			const RemiNombre = urlParams.get('RemiNombre');
+			const RemiCuit = urlParams.get('RemiCuit');
+			const RemiCbu = urlParams.get('RemiCbu');
+			var RemiSaldo = urlParams.get('RemiSaldo');
+			const RemiMotivo = urlParams.get('RemiMotivo');
+			const DestiNombre1 = urlParams.get('DestiNombre1');
+			const DestiNombre2 = urlParams.get('DestiNombre2');
+			const DestiAlias = urlParams.get('DestiAlias');
+			const DestiCbuDest = urlParams.get('DestiCbuDest');
+			const DestiCuit = urlParams.get('DestiCuit');
+			const DestiCuenta = urlParams.get('DestiCuenta');
+			const DestiTipo = urlParams.get('DestiTipo');
+			const DestiImagen = urlParams.get('DestiImagen');
+			var monto = urlParams.get('monto');
+			var hora = urlParams.get('hora');
+			var notificacion = urlParams.get('notificacion');
+			var TresCod = urlParams.get('TresCod');
+			var newMensaje = urlParams.get('newMensaje');
+			var newMotivo = urlParams.get('newMotivo');
+
+
+			document.getElementById("montoNoti").innerHTML = monto;
+			document.getElementById("nombreNoti").innerHTML = DestiNombre1.substring(0, 6) + " ...";
+			document.getElementById("mont").innerHTML = monto;
+			document.getElementById("name").innerHTML = DestiNombre1;
+			document.getElementById("mensaje").innerHTML = newMensaje;
+			document.getElementById("billetera").innerHTML = DestiCuenta;
+			document.getElementById("nCuenta").innerHTML = DestiTipo;
+			document.getElementById("nCuenta2").innerHTML = RemiMotivo;
+
+
+
+
+			if (DestiImagen !== "no") {
+				document.getElementById("imagen").src = DestiImagen;
+			}
+
+
+
+			function obtenerFechaActual() {
+				// Obtener la fecha actual
+				var fechaActual = new Date();
+
+				// Obtener día, mes y año
+				var dia = agregarCeroDelante(fechaActual.getDate());
+				var mes = agregarCeroDelante(fechaActual.getMonth() + 1); // El mes es devuelto de 0 a 11
+				var anio = fechaActual.getFullYear();
+
+				// Formatear la fecha según el formato deseado
+				var formatoFecha = dia + '/' + mes + '/' + anio;
+
+				return formatoFecha;
+			}
+
+			// Función para agregar un cero delante de números menores a 10
+			function agregarCeroDelante(numero) {
+				return numero < 10 ? '0' + numero : numero;
+			}
+
+			// Obtener y mostrar la fecha actual
+			var fechaFormateada = obtenerFechaActual();
+
+
+
+
+			function obtenerHoraActual() {
+				// Obtener la hora actual
+				var horaActual = new Date();
+
+				// Obtener horas y minutos
+				var horas = agregarCeroDelante(horaActual.getHours());
+				var minutos = agregarCeroDelante(horaActual.getMinutes());
+
+				// Formatear la hora según el formato deseado
+				var formatoHora = horas + ':' + minutos;
+
+				return formatoHora;
+			}
+
+			// Función para agregar un cero delante de números menores a 10
+			function agregarCeroDelante(numero) {
+				return numero < 10 ? '0' + numero : numero;
+			}
+
+			// Obtener y mostrar la hora actual
+			var horaActual = obtenerHoraActual();
+
+
+
+
+			//Generar codigo de transferencia.
+			function generarNumeroAleatorio() {
+				const min = 10000000; // El número mínimo de 8 dígitos
+				const max = 99999999; // El número máximo de 8 dígitos
+				const numeroAleatorio = Math.floor(Math.random() * (max - min + 1)) + min;
+				return numeroAleatorio;
+			}
+			//Armar fecha
+			if (hora == "Actual") {
+				hora = horaActual;
+			}
+			var codT = TresCod + generarNumeroAleatorio();
+			var fecha = fechaFormateada + " a las " + hora;
+			console.log(fecha);
+
+			// Activar notificacion y vibracion
+
+			var btn = document.getElementById("btnCompartir");
+			btn.addEventListener("click", function (event) {
+				var content = document.getElementById("content");
+				var encab = document.getElementById("enca");
+				encab.style.display = "none";
+				content.style.display = "none";
+
+
+				var x = event.clientX - btn.getBoundingClientRect().left;
+
+				var buttonWidth = btn.offsetWidth;
+
+
+				if (x < buttonWidth / 2) {
+					// Acción para el lado izquierdo SIN NOTIFICACION
+					notificacion = "no";
+					document.body.style.backgroundColor = '#ffffff';
+					window.open("comprobante/comprobante.html?RemiNombre=" + RemiNombre + "&RemiCuit=" + RemiCuit + "&RemiCbu=" + RemiCbu + "&RemiSaldo=" + RemiSaldo + "&RemiMotivo=" + RemiMotivo + "&DestiNombre1=" + DestiNombre1 + "&DestiNombre2=" + DestiNombre2 + "&DestiAlias=" + DestiAlias + "&DestiCbuDest=" + DestiCbuDest + "&DestiCuit=" + DestiCuit + "&DestiCuenta=" + DestiCuenta + "&DestiTipo=" + DestiTipo + "&DestiImagen=" + DestiImagen + "&monto=" + monto + "&fecha=" + fecha + "&hora=" + hora + "&codT=" + codT + "&TresCod=" + TresCod + "&newMensaje=" + newMensaje + "&newMotivo=" + newMotivo + "&notificacion=" + notificacion, '_self');
+				} else {
+					// Acción para el lado derecho CON NOTIFICACION
+					notificacion = "si";
+					document.body.style.backgroundColor = '#ffffff';
+					window.open("comprobante/comprobante.html?RemiNombre=" + RemiNombre + "&RemiCuit=" + RemiCuit + "&RemiCbu=" + RemiCbu + "&RemiSaldo=" + RemiSaldo + "&RemiMotivo=" + RemiMotivo + "&DestiNombre1=" + DestiNombre1 + "&DestiNombre2=" + DestiNombre2 + "&DestiAlias=" + DestiAlias + "&DestiCbuDest=" + DestiCbuDest + "&DestiCuit=" + DestiCuit + "&DestiCuenta=" + DestiCuenta + "&DestiTipo=" + DestiTipo + "&DestiImagen=" + DestiImagen + "&monto=" + monto + "&fecha=" + fecha + "&hora=" + hora + "&codT=" + codT + "&TresCod=" + TresCod + "&newMensaje=" + newMensaje + "&newMotivo=" + newMotivo + "&notificacion=" + notificacion, '_self');
+
+				}
+			});
+
+			//HORA DE NOTIFICACION			
+			var fechaActual2 = new Date();
+
+
+			var horas2 = fechaActual2.getHours();
+
+			var minutos2 = fechaActual2.getMinutes();
+
+			var horaActual2 = horas2 + ":" + minutos2;
+
+
+			if (hora == "Actual") {
+				document.getElementById("horaNoti").innerHTML = horaActual2;
+			} else {
+				document.getElementById("horaNoti").innerHTML = hora;
+			}
+
+
+
+			//ANIMACION NOTIFICACION
+
+
+
+			var notificacionContainer = document.getElementById("notificacionContainer");
+
+			if (notificacion === "no") {
+				notificacionContainer.style.display = "none";
+
+			}
+
+
+
+			// Desaparece por click
+			notificacionContainer.addEventListener("touchstart", function () {
+				notificacionContainer.classList.add("fade-out");
+				setTimeout(function () {
+					notificacionContainer.style.display = "none";
+				}, 500);
+			});
+
+			// Desaparece por tiempo
+			function laFuncion() {
+
+				notificacionContainer.classList.add("fade-out");
+				setTimeout(function () {
+					notificacionContainer.style.display = "none";
+				}, 500);
+			}
+			setTimeout(laFuncion, 11000);
+
+
+			document.getElementById("btnInicio").addEventListener("click", function () {
+				window.open("../../../../index.html?RemiNombre=" + RemiNombre + "&RemiCuit=" + RemiCuit + "&RemiCbu=" + RemiCbu + "&RemiSaldo=" + RemiSaldo + "&RemiMotivo=" + RemiMotivo + "&DestiNombre1=" + DestiNombre1 + "&DestiNombre2=" + DestiNombre2 + "&DestiAlias=" + DestiAlias + "&DestiCbuDest=" + DestiCbuDest + "&DestiCuit=" + DestiCuit + "&DestiCuenta=" + DestiCuenta + "&DestiTipo=" + DestiTipo + "&DestiImagen=" + DestiImagen + "&monto=" + monto + "&hora=" + hora + "&TresCod=" + TresCod, '_self');
+
+			});
+
+
+
+
+			// Deshabilitar el zoom táctil
+			document.addEventListener('touchstart', function (event) {
+				if (event.touches.length > 1) {
+					event.preventDefault();
+				}
+			}, { passive: false });
+
+			document.addEventListener('touchmove', function (event) {
+				if (event.touches.length > 1) {
+					event.preventDefault();
+				}
+			}, { passive: false });
+
+
+			// Desactiva el scroll utilizando JavaScript
+			function disableScroll() {
+				window.addEventListener('scroll', noScroll);
+			}
+
+			function enableScroll() {
+				window.removeEventListener('scroll', noScroll);
+			}
+
+			function noScroll() {
+				window.scrollTo(0, 0);
+			}
+
+			// Activa/desactiva el scroll según sea necesario
+			disableScroll();
+
+
+
+
+
+
+			// LOGOS 				
+			if (DestiCuenta == "Mercado Pago") {
+				document.getElementById("imagenLogo").src = "img/logosWallet/mp.jpg";
+			}
+			if (DestiCuenta == "Ualá") {
+				document.getElementById("imagenLogo").src = "img/logosWallet/ual.jpg";
+			}
+			if (DestiCuenta == "LEMON") {
+				document.getElementById("imagenLogo").src = "img/logosWallet/lem.jpg";
+			}
+			if (DestiCuenta == "Prex") {
+				document.getElementById("imagenLogo").src = "img/logosWallet/pre.jpg";
+			}
+			if (DestiCuenta == "Brubank") {
+				document.getElementById("imagenLogo").src = "img/logosWallet/bru.jpg";
+			}
+			if (DestiCuenta == "Reba") {
+				document.getElementById("imagenLogo").src = "img/logosWallet/re.png";
+			}
+
+			if (DestiCuenta.toLowerCase().includes("naranja")) {
+				document.getElementById("imagenLogo").src = "img/logosWallet/nar.png";
+			}
+
+			if (DestiCuenta.toLowerCase().includes("santander")) {
+				document.getElementById("imagenLogo").src = "img/logosWallet/santander.jpg";
+			}
+		</script>
+		<script src="storage.js"></script>
+</body>
+
+</html>

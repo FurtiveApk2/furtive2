@@ -1,0 +1,119 @@
+@font-face {
+	font-family: 'Proxima Nova';
+	src: url('ProximaNovaRegular.ttf') format('truetype'); 
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+
+.spinner {
+	margin: 0 auto;
+	width: 15px;
+	height: 15px;
+	border: 2px solid #f3f3f3;
+	border-top: 2px solid #3498db;
+	border-radius: 50%;
+	animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+
+
+body {
+    
+    display: block;
+    align-items: center;
+    justify-content: center;
+    font-family: "Bariol", sans-serif;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    min-height: 100vh; /* Asegura que el gradiente cubra toda la altura de la ventana */
+	
+	
+}
+
+
+
+#content {
+    align-items: center;
+}
+
+#img1 {		
+	width: 100%; 
+}
+
+
+
+.imagen-fija { 
+	position: fixed;
+	z-index: 9999;
+	top: 0;
+	width: 100%;
+}
+
+.nombremail {
+	position: absolute; 
+	font-family: 'Proxima Nova', sans-serif;
+	margin-left: 29%;
+	top: 14.5%;
+	z-index: 999;
+}
+
+ 
+
+.nombre {	 
+	margin-bottom: 4px;
+	font-size: 1.1em;
+}
+
+
+.email {	 	 
+	font-size: 0.9em;
+}
+
+
+.nombreId {
+	position: absolute;
+	width: 100%;
+	font-family: 'Proxima Nova', sans-serif;
+	left: 10%;
+	top: 23%;
+	z-index: 999;
+}
+
+.cuit {
+	position: absolute;
+	width: 100%;
+	font-family: 'Proxima Nova', sans-serif;
+	left: 10%;
+	top: 31%;
+	z-index: 999;
+}
+
+
+#img2 {
+	width: 100%;
+	position: relative; 
+	margin-top: 21%;
+}
+
+
+#img3 {
+	position: relative; 
+    width: 100%;
+}
+#imgId {
+	width: 100%;
+	position: relative; 
+	margin-top: 21%;
+}

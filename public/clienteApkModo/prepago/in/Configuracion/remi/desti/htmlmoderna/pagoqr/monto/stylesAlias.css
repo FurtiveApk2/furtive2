@@ -1,0 +1,49 @@
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('ProximaNovaRegular.ttf') format('truetype'); 
+  font-weight: normal;
+  font-style: normal;
+}
+
+ 
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+
+
+body {
+	height: 100vh;
+	
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: 'Proxima Nova', sans-serif;
+	overflow: hidden;
+}
+#back {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 999;
+}
+
+#back img{ 
+	width: 100%; 
+	 
+}
+
+#imgQR{ 
+	width: 100%; 
+	height: 100vh;
+}
+
+ 
+ 

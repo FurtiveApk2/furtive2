@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://kit.fontawesome.com/67821f8363.js" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="stylesAlias.css">
+	<link rel="preload" as="font" href="ProximaNovaRegular.ttf" type="font/ttf" crossorigin="anonymous">
+
+
+</head>
+
+<body>
+	<!-- PAGINA ALIAS -->
+	<div id="loader" style="display: flex; justify-content: center; align-items: center;">
+		<!-- Spinner -->
+		<img src="img/spinner.gif" class="spinner"></img>
+	</div>
+	<div id="lonjaStatus"
+		style="height: 26px;z-index: 999999999;background: black; position: fixed; top: 0; width: 100%;opacity: 0.3;"> 
+	</div>
+
+	<div id="content" style="display: none;">
+
+		<div id="back">
+			<img id="enc" src="img/encaAlias.jpg">
+
+		</div>
+
+		<div id="front">
+			<div id="data">
+				<img id="imagen" src="img/img1.jpg">
+				<div class="info-container">
+					<h1 id="nombre">Mercado Pago</h1>
+					<h1 id="banco" style="white-space: nowrap;"><span id="billetera">Mercado Pago</span> · CA <span
+							id="nCuenta">9999</span></h1>
+					<h1 id="alias">Alias:</h1>
+					<h1 id="cbu">0000065566565</h1>
+					<h1 id="cuit">20-00000-1</h1>
+				</div>
+			</div>
+
+
+		</div>
+	</div>
+
+	<!-- FIN PAGINA ALIAS -->
+
+	<!-- PAGINA MONTO -->
+
+
+
+	<div id="content2" style="display: none;">
+		<!-- ENCABEZADO -->
+		<div id="back">
+			<img src="img/encaMonto.jpg" id="atras"></img>
+			<b><span id="nCuenta2">9999</span></b>
+			<b><span id="SaldoDispo">9999</span> </b>
+		</div>
+		<img src="img/insuficiente.jpg" id="saldoInsuficiente"></img>
+		<!-- VISOR DE MONTO -->
+		<div id="visor"><span id="signo">$</span>
+			<div id="resultado">0</div>
+			<div id="coma">,</div>
+			<div id="decimales"></div>
+		</div>
+		<b><span id="UsarTodo">Usar todo mi saldo</span> </b>
+
+
+		<!-- ELEGIR MOTIVO -->
+		<div id="overlay"></div>
+
+		<div id="solapa">
+			<ul>
+				<b><span>Seleccioná el motivo del envío</span> </b>
+				<li onclick="seleccionarMotivo('Alquileres')">Alquileres</li>
+				<li onclick="seleccionarMotivo('Aportes de capital')">Aportes de capital</li>
+				<li onclick="seleccionarMotivo('Bienes registrables habitualistas')">Bienes registrables habitualistas
+				</li>
+				<li onclick="seleccionarMotivo('Cuotas')">Cuotas</li>
+				<li onclick="seleccionarMotivo('Expensas')">Expensas</li>
+				<li onclick="seleccionarMotivo('Facturas')">Facturas</li>
+				<li onclick="seleccionarMotivo('Haberes')">Haberes</li>
+				<li onclick="seleccionarMotivo('Honorarios')">Honorarios</li>
+				<li onclick="seleccionarMotivo('Operaciones inmobiliarias')">Operaciones inmobiliarias</li>
+				<li onclick="seleccionarMotivo('Préstamos')">Préstamos</li>
+				<li onclick="seleccionarMotivo('Varios')">Varios</li>
+
+			</ul>
+		</div>
+
+		<div id="contMoti">
+			<div id="motivoEtiqueta" onclick="mostrarSolapa()">
+				<span><b>Motivo <span id="motivoSeleccionado">Varios</span> <i class="fa-solid fa-chevron-down fa-sm"
+							style="color: #2043ff; "></i></b></span>
+			</div>
+		</div>
+
+		<!-- ESCRIBIR MENSAJE -->
+		<div id="mensaje">
+			<div id="titulo">Mensaje (0/45)</div>
+			<div id="contenedorInput">
+				<input type="text" placeholder="Motivo del envío" id="texto" maxlength="45"
+					oninput="actualizarContador()">
+				<img src="img/gifBtn.jpg" alt="GIF Button">
+			</div>
+		</div>
+
+		<!-- CONTINUAR -->
+		<div id="continue-button" onclick="siguiente()">Continuar</div>
+
+		<div id="teclado">
+			<button onclick="agregarNumero(1)">1</button>
+			<button onclick="agregarNumero(2)">2</button>
+			<button onclick="agregarNumero(3)">3</button>
+			<button onclick="agregarNumero(4)">4</button>
+			<button onclick="agregarNumero(5)">5</button>
+			<button onclick="agregarNumero(6)">6</button>
+			<button onclick="agregarNumero(7)">7</button>
+			<button onclick="agregarNumero(8)">8</button>
+			<button onclick="agregarNumero(9)">9</button>
+			<button onclick="agregarCaracter(',')">,</button>
+			<button onclick="agregarNumero(0)">0</button>
+			<button onclick="borrarUltimoCaracter()"><img src="img/delete.png" id="delete"
+					style="width: 72%;"></img></button>
+		</div>
+
+
+
+		<script>
+			function siguiente() {
+				var newMotivo = document.getElementById("motivoSeleccionado").textContent;
+				var newMensaje = document.getElementById("texto").value;
+				var decimalesDiv = document.getElementById('decimales');
+
+				setTimeout(function () {
+					var ent = document.getElementById("resultado");
+					if (ent.textContent != "0") {
+						if (decimalesDiv.style.display == 'inline') {
+							monto = ent.textContent + "," + decimalesDiv.textContent;
+						} else {
+							monto = ent.textContent;
+						}
+
+						window.open("prepago/prepago.html?RemiNombre=" + RemiNombre + "&RemiCuit=" + RemiCuit + "&RemiCbu=" + RemiCbu + "&RemiSaldo=" + RemiSaldo + "&RemiMotivo=" + RemiMotivo + "&DestiNombre1=" + DestiNombre1 + "&DestiNombre2=" + DestiNombre2 + "&DestiAlias=" + DestiAlias + "&DestiCbuDest=" + DestiCbuDest + "&DestiCuit=" + DestiCuit + "&DestiCuenta=" + DestiCuenta + "&DestiTipo=" + DestiTipo + "&DestiImagen=" + DestiImagen + "&monto=" + monto + "&hora=" + hora + "&TresCod=" + TresCod + "&newMotivo=" + newMotivo + "&newMensaje=" + newMensaje, '_self');
+					}
+
+				}, 300);
+			}
+		</script>
+	</div>
+
+
+
+
+	<!-- FIN PAGINA MONTO -->
+
+	<script>
+		window.onload = function () {
+			var loader = document.getElementById("loader");
+			var content = document.getElementById("content");
+			setTimeout(function () {
+				// Ocultar el mensaje de carga y mostrar el contenido de la página
+				loader.style.display = "none";
+				content.style.display = "block";
+
+			}, 1500);
+
+
+		};
+
+
+
+
+		//GET INFO PARAMS  
+		const queryString = window.location.search;
+		//luego podemos analizar los parámetros de la cadena de consulta usando URLSearchParams: 
+		const urlParams = new URLSearchParams(queryString);
+
+		const RemiNombre = urlParams.get('RemiNombre');
+		const RemiCuit = urlParams.get('RemiCuit');
+		const RemiCbu = urlParams.get('RemiCbu');
+		var RemiSaldo = urlParams.get('RemiSaldo');
+		var RemiMotivo = urlParams.get('RemiMotivo');
+		const DestiNombre1 = urlParams.get('DestiNombre1');
+		const DestiNombre2 = urlParams.get('DestiNombre2');
+		const DestiAlias = urlParams.get('DestiAlias');
+		const DestiCbuDest = urlParams.get('DestiCbuDest');
+		const DestiCuit = urlParams.get('DestiCuit');
+		const DestiCuenta = urlParams.get('DestiCuenta');
+		const DestiTipo = urlParams.get('DestiTipo');
+		const DestiImagen = urlParams.get('DestiImagen');
+		var monto = urlParams.get('monto');
+		var hora = urlParams.get('hora');
+		var TresCod = urlParams.get('TresCod');
+
+
+		document.getElementById("nombre").innerHTML = DestiNombre1;
+		document.getElementById("cbu").innerHTML = DestiCbuDest;
+		document.getElementById("cuit").innerHTML = DestiCuit;
+		document.getElementById("alias").innerHTML = DestiAlias;
+		document.getElementById("nCuenta").innerHTML = DestiTipo;
+		document.getElementById("nCuenta2").innerHTML = RemiMotivo;
+		document.getElementById("SaldoDispo").innerHTML = "$ " + RemiSaldo;
+		document.getElementById("billetera").innerHTML = DestiCuenta;
+
+
+
+
+
+
+		// Deshabilitar el zoom táctil
+		document.addEventListener('touchstart', function (event) {
+			if (event.touches.length > 1) {
+				event.preventDefault();
+			}
+		}, { passive: false });
+
+		document.addEventListener('touchmove', function (event) {
+			if (event.touches.length > 1) {
+				event.preventDefault();
+			}
+		}, { passive: false });
+
+	</script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+	<script src="scripts.js"></script>
+	<script src="scriptsAlias.js"></script>
+
+</body>
+
+</html>

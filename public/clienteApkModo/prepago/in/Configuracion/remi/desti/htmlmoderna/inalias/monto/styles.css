@@ -1,0 +1,295 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300&display=swap');
+
+
+.spinner {
+	width: 80px;
+	height: 80px;
+	margin-top: -112%;
+	position: absolute;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+ 
+
+body {
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	user-select: none;
+}
+
+#back{
+	top: 0;
+	position: fixed;
+	width: 100%;
+	font-family: 'DM Sans', sans-serif;
+	
+}
+
+#back img{
+	width:100%;
+}
+
+#content2 {
+	display: block;
+	position: relative;
+	width: 100%;  
+	height: 100vh;
+}
+
+#nCuenta2 {
+	position: absolute;
+	top: 46.5%;
+	right: 33%;
+	font-size: 13px;
+}
+
+#SaldoDispo {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	font-size: 15px;
+	bottom: 8px;
+	color: #959595;
+	top: 73%;
+}
+
+#saldoInsuficiente{
+	z-index: 999;
+	position: absolute;
+	width: 100%;
+	top: 90px;
+	display: none;
+}
+
+
+
+
+/* VISOR DE MONTO */
+
+#visor {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: 'Prompt', sans-serif;
+	white-space: nowrap;
+	text-align: center; 
+	margin-top: 10%;
+	position: relative;
+	color: #9c9898;
+	text-align: center;
+	text-justify: center;
+	align-content: center;
+	align-items: center;
+	left: -3%;
+}
+
+#signo {
+	font-size: 25px;
+	position: relative;
+	top: 3px;
+	 
+}
+
+#resultado {
+	position: relative;
+	padding: 2px;
+	margin-top: 10px;
+	font-size: 50px;
+	display: inline-block;
+	box-sizing: border-box;
+}
+
+#coma {
+	position: relative;
+	top: 8px;
+	font-size: 36px;
+	left: -4px;
+	color: black;
+	display: none;
+}
+
+#decimales {
+	position: relative;
+	top: 14px;
+	font-size: 26px;
+	left: -3px;
+	color: black;
+	display: none;
+}
+
+
+#UsarTodo {
+	position: relative; 
+	font-size: 10px;
+	color: #193be2;
+	font-family: 'DM Sans', sans-serif; 
+	left: 39%;
+	transform: translateX(-50%);
+}
+
+
+/* ELEGIR MOTIVO */
+#contMoti {
+	width: 100%;
+	position: relative;
+	display: flex;
+    justify-content: center; /* Centra horizontalmente los elementos */
+    align-items: center;
+	top: 10%; 
+}
+
+#motivoEtiqueta { 
+	white-space: nowrap;
+	display: inline-block; 
+	font-size: 12px;
+	font-family: 'DM Sans', sans-serif;
+	border: 2px solid #bbb7b728;
+	border-radius: 26px;
+	padding: 6px;
+	padding-left: 17px;
+	padding-right: 17px; 
+}
+
+ 
+
+#motivoSeleccionado{ 
+	color: #193be2;
+}
+ 
+
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: none;
+  z-index: 999;
+  }
+
+#solapa {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 80%;
+  background: #fff;
+  display: none;
+  z-index: 1000;
+  border-radius: 20px;
+}
+
+#solapa ul {
+	list-style: none;
+	padding: 60px;
+	margin: 0;
+	text-align: center;
+	font-size: 20px;
+	margin-top: -8%;
+}
+
+#solapa ul li {
+	padding: 5px;
+	cursor: pointer;
+	border: 2px solid #bbb7b766;
+	border-radius: 26px;
+	margin-top: 9px;
+}
+
+#solapa ul li:last-child {
+  border-bottom: none;
+}
+
+/* MENSAJE */
+#mensaje {
+	border: 2px solid #bbb7b766;
+	border-radius: 14px;
+	padding: 0px;
+	width: 91%;
+	position: relative;
+	left: 4%;
+	font-size: 15px;
+	font-family: 'DM Sans', sans-serif; 
+	padding-right: 5px;
+	padding-left: 27px;
+	margin-top: 30%;
+}
+
+#contenedorInput {
+	display: flex;
+	align-items: center;
+	margin-top: 2px;
+}
+
+#titulo {
+	position: absolute;
+	top: -12px;
+	left: 14px;
+	font-weight: bold;
+	background: white;
+	padding: 2px;
+}
+
+#texto {
+	width: 100%;
+	box-sizing: border-box; 
+	border: none;
+	outline: none; 
+}
+
+#mensaje  img{
+	width: 46px;
+}
+
+
+/* continue-button */
+#continue-button {
+	color: #979494;
+	text-align: center;
+	position: relative; 
+	font-size: 18px;
+	background: #f5f5f566;
+	width: 91%;
+	left: 4%;
+	padding: 15px;
+	border-radius: 9px;
+	margin-top: 4%;
+}
+
+ 
+
+#teclado {
+	 
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 10px;
+	margin-top: auto;
+	position: fixed;
+	width: 100%;
+	bottom: 0%;
+	padding: 20px;
+}
+
+button {
+	width: 100%;
+	height: 5vh;
+	font-size: 20px;
+	background-color: #f5f5f566;
+	color: black;
+	cursor: pointer;
+	font-family: 'Prompt', sans-serif;
+	border: none;
+	border-radius: 5px;
+	position: relative;
+}
+
+
+
