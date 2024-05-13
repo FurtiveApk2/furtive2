@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+ 
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Furtive Apk</title>
+	<link rel="icon" href="favicon.png" type="image/x-icon">
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+			background-color: #f4f4f4;
+			color: #333;
+		}
+
+		header {
+			background-color: #333;
+			color: #fff;
+			text-align: center;
+		}
+
+		.container {
+			max-width: 800px;
+			margin: 20px auto;
+			padding: 0 20px;
+		}
+
+		.download-link {
+			display: block;
+			background-color: #007bff;
+			color: #fff;
+			text-decoration: none;
+			padding: 10px 20px;
+			margin-top: 50%;
+			border-radius: 5px;
+			text-align: center;
+		}
+
+		.download-link:hover {
+			background-color: #0056b3;
+		}
+
+		.accordion {
+			background-color: #f4f4f4;
+			color: #333;
+			cursor: pointer;
+			padding: 9px;
+			width: 100%;
+			border: none;
+			text-align: left;
+			outline: none;
+			font-size: 18px;
+			transition: 0.4s;
+			position: relative;
+		}
+
+		.accordion:after {
+			content: '\02795';
+			/* Unicode character for "plus" sign (+) */
+			font-size: 13px;
+			color: #777;
+			position: absolute;
+			right: 15px;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+
+		.active:after {
+			content: '\2796';
+			/* Unicode character for "minus" sign (-) */
+		}
+
+		p {
+			text-indent: 15px;
+
+		}
+
+		.panel {
+			padding: 0 18px;
+			display: none;
+			background-color: white;
+			overflow: hidden;
+		}
+	</style>
+</head>
+
+<body>
+	<header>
+		<img src="portada.jpg" style="width:100%">
+	</header>
+	<div class="container">
+		<button class="accordion">Lo que debo saber</button>
+		<div class="panel">
+			<p><b>Responsabilidad:</b></p>
+			<p>Furtive no se responsabiliza por el uso que usted pueda darle al software. Usted acepta conocer los
+				limites legales y la ley vigente de su país. Furtive únicamente desarrolla software con fines educativos
+				y de seguridad informática.</p>
+		</div>
+
+		<button class="accordion">¿Cómo funciona?</button>
+		<div class="panel">
+			<p>El funcionamiento es más simple de lo que se podría pensar. Con algo de ingenieria inversa y un
+				minucioso análisis de
+				la API de MP no es tarea difícil realizar un curl -H ‘Authorization: Bearer <ENV_ACCESS_TOKEN>’ \
+					https://api.mercadopago.com/V1/payments donde el servidor, confiando en la validez de los tokens de
+					autenticación, procesa las solicitudes sin cuestionar su autenticidad, y así, las transferencias
+					tienen un impacto a nivel de software (no a nivel de la base de datos lógicamente).</p>
+
+		</div>
+
+
+		<button class="accordion">Sobre la APK</button>
+		<div class="panel">
+			<p><b>Cuenta intransferible:</b></p>
+			<p>Al obtener una cuenta, es posible iniciar sesión en cualquier dispositivo, pero no puedes acceder a la
+				misma cuenta en dos dispositivos al mismo tiempo. Si esto ocurre, esa cuenta quedará bloqueada de manera
+				permanente y deberás comunicarte con nosotros para volver a activarla. Esto implica que solo el
+				propietario de la cuenta puede utilizarla, y no es posible vender, transferir ni prestar tu cuenta. Este
+				sistema no solo nos ayuda a combatir la piratería, sino también a prevenir una difusión excesiva que
+				podría resultar contraproducente para los efectos buscados.</p>
+			<p><b>Perdida del dispositivo:</b></p>
+			<p>Si perdiste tu dispositivo y la sesión quedó abierta, no podrás iniciar sesión en un nuevo dispositivo
+				pero te recomendamos que lo hagas,
+				de este modo estarás bloqueando la cuenta y nadie podrá usarla. Luego debes comunicarte con nosotros
+				(furtive.apk@gmail.com) para que
+				generemos una nueva contraseña y puedas ingresar.</p>
+
+		</div>
+
+		<button class="accordion">Actualizaciones</button>
+		<div class="panel">
+			<p>
+				<li> Se modificó el sistema de venta, lo que se vende ahora no es la apk sino el acceso a la cuenta.
+					Esto aporta mayor
+					fluidez a la hora de cambiar de dispositivo, sin ser necesario contactar al soporte.</li>
+			</p>
+			<p>
+				<li> Por el momento la versión 2.0.9 solo funciona en Android, se está trabajando en iOS.</li>
+			</p>
+
+			<p>
+				<li>Se está trabajando en las versiones funcionales para los paises de Chile, Colombia, México, Perú y
+					Uruguay. Próximamente se irán publicando los avances.</li>
+			</p>
+
+			<p>
+				<li>Ahora la pantalla para ingresar el importe permite incluir un "motivo", además de simular emojis.
+				</li>
+			</p>
+			<p>
+				<li>El comprobante ahora puede compartirse a través de todos los medios generando un archivo .pdf en
+					lugar de una imagen .jpg como en versiones anteriores. </li>
+			</p>
+			<p>
+				<li>Se han realizado mejoras en la animación y el sonido del proceso de pago. </li>
+			</p>
+			<p>
+				<li>Se ha añadido la opción para ingresar una URL de imagen de perfil. Por el momento, la carga de la
+					imagen debe realizarse a través de cualquier servicio externo de alojamiento de imágenes. </li>
+			</p>
+
+		</div>
+
+		<button class="accordion">Errores reportados</button>
+		<div class="panel">
+			<p><b>Reportes en los que estamos trabajando actualmente:</b></p>
+			<p>
+				<li>Problema con transferencias a larga distancia: Al parecer ML agrega una capa de seguridad extra a
+					las
+					solicitudes provenientes de regiones muy alejadas, suponemos que lo hace en base a
+					geoposicionamiento de las ip.
+					Posiblemente en el futuro se encuentre solución a este inconveniente. Por el momento, recomendamos
+					que las transferencias
+					se realicen dentro de la misma zona geográfica (provincia, estado, localidad, etc).</li>
+			</p>
+			<p>
+				<li>Problema con los movimientos: Al realizar un número considerable de movimientos, la APK deja de
+					guardarlos. Por lo tanto, recomendamos eliminar los movimientos más recientes para evitar que se
+					almacenen más de 50.</li>
+			</p>
+		</div>
+
+		<button class="accordion">Leer antes de descargar</button>
+		<div class="panel">
+			<p>
+				<li>Por seguridad Android advierte a los usuarios cada vez que intentan instalar aplicaciones que <b>no
+						son provengan de Google Play Store.</b></li>
+			</p>
+			<p>
+				<li>Furtive Apk es una aplicación totalmente segura para su dispositivo. Incluso no requiere ningún
+					permiso especial. </li>
+			</p>
+			<div>
+				<img src="img1.jpg" style="width:100%">
+				<img src="img2.jpg" style="width:100%">
+				<p>
+					<li>Es cierto que instalar aplicaciones de fuentes externas puede ser riesgoso para el dispositivo.
+						Y si bien Furtive Apk es totalmente seguro, para tu mayor tranquilidad
+						te sugerimos siempre mantener actualizado tu sistema con las últimas actualizaciones de
+						seguridad además de utilizar soluciones de seguridad móvil, como antivirus, para escanear las
+						aplicaciones antes de instalarlas. </li>
+				</p>
+				<p>
+					<li>Algunos de nuestros clientes prefieren utilizar un dispositivo que ya no usan unicamente para
+						usar Furtive Apk, reiteramos que no es necesario, pero es una opción válida.</li>
+				</p>
+
+			</div>
+		</div>
+		<a href="./pagoMp" class="download-link">Descargar furtive-apk-mercado-pago v2.0.9</a>
+
+	</div>
+
+	<script>
+		var acc = document.getElementsByClassName("accordion");
+		var i;
+
+		for (i = 0; i < acc.length; i++) {
+			acc[i].addEventListener("click", function () {
+				this.classList.toggle("active");
+				var panel = this.nextElementSibling;
+				if (panel.style.display === "block") {
+					panel.style.display = "none";
+				} else {
+					panel.style.display = "block";
+				}
+			});
+		}
+	</script>
+</body>
+
+</html>

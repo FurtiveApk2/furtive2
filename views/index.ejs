@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<script src="limitCookie.js"></script>
+<script>
+    ipControl();
+    sumarVisit();
+    checkVisit("visita");
+</script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Furtive Apk</title>
+    <link rel="icon" href="favicon.png" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/67821f8363.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            display: none;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 10px 20px;
+            border: 1px solid #c1c1c1;
+            width: 80%;
+        }
+
+        .download-link {
+            display: block;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .download-link:hover {
+            background-color: #0056b3;
+        }
+
+        li {
+            margin-left: 5%;
+        }
+
+        #lista li a {
+            text-decoration: none;
+        }
+
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+        }
+
+        #video-container {
+            position: absolute;
+        }
+
+        #video-title {
+            color: #fff;
+            font-size: 24px;
+            margin-bottom: 10px;
+            text-align: center;
+            /* Centrar el texto horizontalmente */
+            margin-left: 2%;
+            /* Margen izquierdo */
+            margin-right: 2%;
+            /* Margen derecho */
+        }
+
+
+        #close-btn {
+            position: absolute;
+            top: 10%;
+            right: 6%;
+            background-color: #fff;
+            color: #000;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 16px;
+            background: white;
+            font-weight: bold;
+            border: 2px solid;
+        }
+
+        .open-video-btn {
+            background-color: #e64910;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .modal {
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border-radius: 5px;
+            max-width: 80%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .lista-desplegable {
+            display: none;
+        }
+    </style>
+</head>
+
+<body id="body">
+
+    <div id="aviso" class="modal">
+        <div id="overlayAviso" onclick="closeAviso()" style="  background-color: #0000005e;
+        width: 100%;
+        height: 100%;
+        position: absolute;">
+
+            <div class="modal-content">
+                <span class="close" id="closeAviso">&times;</span>
+                <h2 style="color: #ff0000;">ADVERTENCIA <i class="fa-solid fa-triangle-exclamation"></i></h2>
+                <p>Muchas cuentas se hacen pasar por nosotros.</p>
+
+                <p id="texto-desplegable" style=" text-decoration: underline; color: blue;"><i
+                        class="fa-solid fa-turn-down"></i> <b>Ver lista de cuentas falsas</b></p>
+
+                <!-- Lista oculta -->
+                <ul id="lista" class="lista-desplegable">
+
+                    <li style="margin-bottom: 2%;"><a href="https://www.tiktok.com/@furtive.apk" target="_blank"><i
+                                class="fa-brands fa-tiktok"></i>
+                            furtive.apk (tiktok)</a></li>
+
+                    <li style="margin-bottom: 2%;"><a href="https://www.facebook.com/profile.php?id=61558108883199"
+                            target="_blank"><i class="fa-brands fa-facebook"></i>
+                            Perfil Bajo Sh</a></li>
+
+                    <li style="margin-bottom: 2%;"><a href="https://www.instagram.com/furtive.apkmp/" target="_blank"><i
+                                class="fa-brands fa-instagram"></i>
+                            furtive.apkmp</a></li>
+
+                    <li style="margin-bottom: 2%;"><a href="https://www.instagram.com/furtive_apk/" target="_blank"><i
+                                class="fa-brands fa-instagram"></i>
+                            furtive_apk</a></li>
+
+                    <li style="margin-bottom: 2%;"><a href="https://www.instagram.com/furtive.apkfull/"
+                            target="_blank"><i class="fa-brands fa-instagram"></i>
+                            furtive.apkfull</a></li>
+
+                    <li style="margin-bottom: 2%;"><a href="https://www.instagram.com/apk.furtive/" target="_blank"><i
+                                class="fa-brands fa-instagram"></i>
+                            apk.furtive</a></li>
+
+                    <li style="margin-bottom: 2%;"><a href="https://www.instagram.com/apkfurtive/" target="_blank"><i
+                                class="fa-brands fa-instagram"></i>
+                            apkfurtive</a></li>
+
+                    <li style="margin-bottom: 2%;"><a href="https://www.instagram.com/furtive.apk_/" target="_blank"><i
+                                class="fa-brands fa-instagram"></i>
+                            furtive.apk_</a></li>
+
+                    <li style="margin-bottom: 2%;"><a href="https://www.instagram.com/furtive___apk___2024/"
+                            target="_blank"><i class="fa-brands fa-instagram"></i>
+                            furtive___apk___2024</a></li>
+
+
+                </ul>
+
+                <p><i class="fa-solid fa-ban" style="font-size: 1.1em;color: #ff0000;"></i> No transfieras dinero a
+                    ninguna
+                    cuenta cuyo alias o cbu no hayas copiado de nuestra página oficial <b>furtive-apk.vercel.app</b></p>
+
+                <p><i class="fa-solid fa-ban" style="font-size: 1.1em;color: #ff0000;"></i> No estamos en Facebook,
+                    Telegram, ni Whatsapp</p>
+
+                <img src="imgNo.png" style="width: 90%;">
+
+                <p><i class="fa-solid fa-thumbs-up" style="font-size: 1.1em;color: #04cf5f;"></i> Nuestras únicas redes
+                    y
+                    medios de contacto son:</p>
+                <li style="margin-bottom: 2%;"><a href="https://www.instagram.com/furtive.apk/" target="_blank"><i
+                            class="fa-brands fa-instagram"></i>
+                        Instagram</a></li>
+                <li style="margin-bottom: 2%;"><a href="https://www.youtube.com/@Furtive-apk/" target="_blank"><i
+                            class="fa-solid fa-circle-play"></i>
+                        YouTube</a></li>
+                <li><a href="mailto:furtive.apk@gmail.com"><i class="fas fa-at"></i> Gmail</a></li>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div id="overlay">
+        <div id="video-container">
+            <h2 id="video-title">Título del video</h2>
+            <video id="video-player" controls autoplay style="width: 100%;">
+                Your browser does not support the video tag.
+            </video>
+
+            <button id="close-btn">Cerrar video</button>
+        </div>
+    </div>
+
+    <header>
+        <img src="portada.jpg" style="width:100%">
+    </header>
+    <div class="container">
+        <img src="imgMp.jpg" style="width: 100%;border: 1px solid;
+            border-radius: 5px;">
+        <p>
+            <li><b>Impacto de transferencias </b>(misma red)</li>
+            <li>Pago QR</li>
+            <li>Interface gráfica optimizada</li>
+            <li>Registro de movimientos</li>
+            <li>Compartir comprobante</li>
+            <li>Manual de uso</li>
+        </p>
+        <p style="font-size: 23px;">Precio: $40.000</p>
+        <div style="display: flex;justify-content: center;gap: 20px;">
+            <a href="./indexMp" class="download-link">Descargar</a>
+            <button class="open-video-btn"
+                data-video="https://firebasestorage.googleapis.com/v0/b/furtive-app.appspot.com/o/furtiveapk.mp4?alt=media&token=209096c5-518f-415b-a98f-6232592798a2"
+                data-title="Video gentileza de @MacroLabs">Video
+                demostración</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <img src="imgMpLite.jpg" style="width: 100%;border: 1px solid;
+            border-radius: 5px;">
+        <p>
+            <li><b>No cuenta con impacto de transferencias</b></li>
+            <li>Pago QR</li>
+            <li>Interface gráfica optimizada</li>
+            <li>Registro de movimientos</li>
+            <li>Compartir comprobante</li>
+            <li>Manual de uso</li>
+        </p>
+        <p style="font-size: 23px;">Precio: $6.000</p>
+
+        <div style="display: flex;justify-content: center;gap: 20px;">
+            <a href="./indexMpLite" class="download-link">Descargar</a>
+            <button class="open-video-btn"
+                data-video="https://firebasestorage.googleapis.com/v0/b/furtive-app.appspot.com/o/MpLite.mp4?alt=media&token=35e1cb36-6fb5-440d-8865-4a2ee4d7c5d2"
+                data-title="Video gentileza @MrDurst">Video
+                demostración</button>
+        </div>
+    </div>
+
+
+
+    <div class="container">
+        <img src="imgModo.jpg" style="width: 100%;border: 1px solid;
+            border-radius: 5px;">
+        <p>
+            <li>Interface gráfica optimizada</li>
+            <li>Registro de movimientos</li>
+            <li>Compartir comprobante</li>
+            <li>Manual de uso</li>
+        </p>
+        <p style="font-size: 23px;">Precio: $6.000</p>
+        <div style="display: flex;justify-content: center;gap: 20px;">
+            <a href="./indexModo" class="download-link" style="background-color: #008759;">Descargar</a>
+            <button class="open-video-btn"
+                data-video="https://firebasestorage.googleapis.com/v0/b/furtive-app.appspot.com/o/MODO.mp4?alt=media&token=c1a0092a-62a3-4608-a254-b89867a8e7ba"
+                data-title="Video gentileza @TheTrader">Video
+                demostración</button>
+        </div>
+
+    </div>
+
+
+    <div class="container">
+        <img src="imgMpBr.jpg" style="width: 100%;border: 1px solid;
+            border-radius: 5px;">
+        <p>
+            <li>Solicite uma versão otimizada para o Brasil. Nós lhe daremos uma chave PIX para efetuar o pagamento.
+            </li>
+            <li>Para comunicar clique <a href="mailto:furtive.apk@gmail.com">aquí</a>.</li>
+        </p>
+    </div>
+
+    <script>
+        const videoButtons = document.querySelectorAll('.open-video-btn');
+        const overlay = document.getElementById('overlay');
+        const closeBtn = document.getElementById('close-btn');
+        const videoPlayer = document.getElementById('video-player');
+        const videoTitle = document.getElementById('video-title');
+
+        videoButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const videoSrc = button.getAttribute('data-video');
+                const title = button.getAttribute('data-title');
+                videoPlayer.src = videoSrc;
+                videoTitle.textContent = title;
+                overlay.style.display = 'block';
+            });
+        });
+
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) {
+                overlay.style.display = 'none';
+                videoPlayer.pause();
+            }
+        });
+
+        closeBtn.addEventListener('click', () => {
+            overlay.style.display = 'none';
+            videoPlayer.pause();
+        });
+
+
+
+
+        function closeAviso() {
+            document.getElementById("aviso").style.display = "none";
+        }
+
+
+        const textoDesplegable = document.getElementById('texto-desplegable');
+        const listaDesplegable = document.getElementById('lista');
+
+        // Función para alternar la visibilidad de la lista
+        function alternarLista(event) {
+
+            event.stopPropagation();
+            if (listaDesplegable.style.display === 'none') {
+                listaDesplegable.style.display = 'block';
+            } else {
+                listaDesplegable.style.display = 'none';
+            }
+        }
+
+        // Agregar evento de clic al texto para alternar la lista
+        textoDesplegable.addEventListener('click', alternarLista);
+
+
+
+
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>

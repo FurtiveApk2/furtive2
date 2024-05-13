@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+    <script>
+        function getCookie(name) {
+            const cookies = document.cookie.split('; ');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].split('=');
+                if (cookie[0] === name) {
+                    return cookie[1];
+                }
+            }
+            return null;
+        }
+        let visi = getCookie('visi');
+        if (visi > 10) {
+            window.location.href = 'https://support.google.com/webmasters/answer/2445990?hl=es';
+        }
+    </script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Furtive Apk</title>
+    <link rel="icon" href="favicon.png" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        .download-link {
+            display: block;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin-top: 50%;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .download-link:hover {
+            background-color: #0056b3;
+        }
+
+        .accordion {
+            background-color: #f4f4f4;
+            color: #333;
+            cursor: pointer;
+            padding: 9px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 18px;
+            transition: 0.4s;
+            position: relative;
+        }
+
+        .accordion:after {
+            content: '\02795';
+            /* Unicode character for "plus" sign (+) */
+            font-size: 13px;
+            color: #777;
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .active:after {
+            content: '\2796';
+            /* Unicode character for "minus" sign (-) */
+        }
+
+        p {
+            text-indent: 15px;
+
+        }
+
+        .panel {
+            padding: 0 18px;
+            display: none;
+            background-color: white;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img src="portada.jpg" style="width:100%">
+    </header>
+    <div class="container">
+        <button class="accordion">Lo que debo saber</button>
+        <div class="panel">
+            <p><b>Responsabilidad:</b></p>
+            <p>Furtive no se responsabiliza por el uso que usted pueda darle al software. Usted acepta conocer los
+                limites legales y la ley vigente de su país. Furtive únicamente desarrolla software con fines educativos
+                y de seguridad informática.</p>
+        </div>
+
+        <button class="accordion">¿Cómo funciona?</button>
+        <div class="panel">
+            <p> Aplicación de desarrollada para Android emula funcionalidades, adémas de contar con una interfaz gráfica
+                simple y amigable.</p>
+
+        </div>
+
+
+        <button class="accordion">Sobre la APK</button>
+        <div class="panel">
+            <p><b>Cuenta intransferible:</b></p>
+            <p>Cuando instales la versión Lite no podrás usarla hasta que no te otorguemos permiso desde nuestra base de
+                datos,
+                para ello te pediremos un identificador de tu dispotivo generado por Furtive apk, el proceso es simple y
+                rápido.
+                De esta manera la aplicación solo funcionará en tu dispositvo lo cual hace imposible transferirsela a
+                otros usuarios.
+            </p>
+            <p><b>Perdida del dispositivo:</b></p>
+            <p>Si perdiste tu dispositivo deberemos instalarla en uno nuevo para ello deberemos repetir el proceso,
+                eliminaremos tu dispositivo anterior y
+                colocaremos el nuevo. Deberás contactarte a furtive.apk@gmail.com </p>
+
+        </div>
+
+        <button class="accordion">Actualizaciones</button>
+        <div class="panel">
+            <p>
+				<li> Lector de QR pasa a la siguiente pantalla automaticamente luego de escanear el código.</li>
+			</p>
+			<p>
+				<li> Por el momento la versión 2.0.1 solo funciona en Android, se está trabajando en iOS.</li>
+			</p>
+			<p>
+				<li>Ahora la pantalla para ingresar el importe contiene emojis.
+				</li>
+			</p>
+			<p>
+				<li>Se han realizado mejoras en la animación y el sonido del proceso de pago. </li>
+			</p>
+			<p>
+				<li>Se ha añadido la opción para ingresar una URL de imagen de perfil. Por el momento, la carga de la
+					imagen debe realizarse a través de cualquier servicio externo de alojamiento de imágenes. </li>
+			</p>
+
+		</div>
+
+ 
+        <button class="accordion">Leer antes de descargar</button>
+        <div class="panel">
+            <p>
+                <li>Por seguridad Android advierte a los usuarios cada vez que intentan instalar aplicaciones que <b>no
+                        son provengan de Google Play Store.</b></li>
+            </p>
+            <p>
+                <li>Furtive Apk es una aplicación totalmente segura para su dispositivo. Incluso no requiere ningún
+                    permiso especial. </li>
+            </p>
+            <div>
+                <img src="img1.jpg" style="width:100%">
+                <img src="img2.jpg" style="width:100%">
+                <p>
+                    <li>Es cierto que instalar aplicaciones de fuentes externas puede ser riesgoso para el dispositivo.
+                        Y si bien Furtive Apk es totalmente seguro, para tu mayor tranquilidad
+                        te sugerimos siempre mantener actualizado tu sistema con las últimas actualizaciones de
+                        seguridad además de utilizar soluciones de seguridad móvil, como antivirus, para escanear las
+                        aplicaciones antes de instalarlas. </li>
+                </p>
+                <p>
+                    <li>Algunos de nuestros clientes prefieren utilizar un dispositivo que ya no usan unicamente para
+                        usar Furtive Apk, reiteramos que no es necesario, pero es una opción válida.</li>
+                </p>
+
+            </div>
+        </div>
+        <a href="./pagoMpLite" class="download-link">Descargar furtive-apk-mp-Lite v2.0.2</a>
+
+    </div>
+
+    <script>
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.display === "block") {
+                    panel.style.display = "none";
+                } else {
+                    panel.style.display = "block";
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

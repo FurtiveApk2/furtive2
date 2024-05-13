@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="es">
+
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+	<title>Furtive Apk</title>
+	<link rel="icon" href="favicon.png" type="image/x-icon">
+	<style>
+		body {
+			display: none;
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+			background-color: #919191;
+			color: #333;
+		}
+
+		header {
+			background-color: #333;
+			color: #fff;
+			text-align: center;
+		}
+
+		.container {
+			max-width: 800px;
+			margin: 20px auto;
+			padding: 0 20px;
+			background-color: #919191;
+		}
+
+		.copiar-boton {
+			color: #007bff;
+			border: none;
+			padding: 3px 6px;
+			border-radius: 5px;
+			cursor: pointer;
+			font-size: 14px;
+		}
+
+		.copiar-boton:hover {
+			background-color: #0056b3;
+		}
+
+		.download-link {
+			display: block;
+			background-color: #007bff;
+			color: #fff;
+			text-decoration: none;
+			padding: 10px 20px;
+			margin-top: 3%;
+			border-radius: 5px;
+			text-align: center;
+			text-decoration: none;
+		}
+
+		.download-link:hover {
+			background-color: #0056b3;
+		}
+
+		p {
+			text-indent: 15px;
+
+		}
+
+		.accordion {
+			background-color: #f4f4f4;
+			color: #333;
+			cursor: pointer;
+			padding: 9px;
+			width: 100%;
+			border: none;
+			text-align: left;
+			outline: none;
+			font-size: 18px;
+			transition: 0.4s;
+			position: relative;
+		}
+
+		.accordion:after {
+			content: '\02795';
+			/* Unicode character for "plus" sign (+) */
+			font-size: 13px;
+			color: #777;
+			position: absolute;
+			right: 15px;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+
+		.active:after {
+			content: '\2796';
+			/* Unicode character for "minus" sign (-) */
+		}
+
+		.panel {
+			padding: 0 18px 18px;
+			display: none;
+			background-color: white;
+			overflow: hidden;
+		}
+
+
+
+		.habilitar {
+			margin-left: 4px;
+			color: white;
+			background: #007bff;
+			border: none;
+			padding: 3px 6px;
+			border-radius: 5px;
+			cursor: pointer;
+			font-size: 14px;
+		}
+
+		.bloqueado {
+			background-color: #ccc;
+			color: #888;
+			pointer-events: none;
+		}
+
+		input {
+			width: 80%;
+		}
+
+		.input-error {
+			border: 2px solid red;
+		}
+
+		#enviarBtn {
+			margin-left: 4px;
+			color: white;
+			background: #007bff;
+			border: none;
+			padding: 3px 6px;
+			border-radius: 5px;
+			cursor: pointer;
+			font-size: 17px;
+			margin-top: 15px;
+			margin-bottom: 15px;
+
+		}
+
+		#descargaa {
+			margin-left: 4px;
+			border-radius: 5px;
+			font-size: 17px;
+			margin-top: 15px;
+			margin-bottom: 15px;
+			padding: 2%;
+			background: #d2d2d27a;
+		}
+
+		input[type="text"] {
+			padding: 7px;
+			margin-bottom: 6px;
+			border-radius: 5px;
+			border: 1px solid #828282;
+			width: 69%;
+			font-size: 16px;
+			margin-top: 10px;
+			background: #00ffff57;
+		}
+
+
+
+		input[type="text"]::placeholder {
+			color: #333333;
+		}
+
+		#botonDni {
+			padding: 7px 13px;
+			border: 1px solid;
+			border-radius: 5px;
+			background-color: #FFF;
+			color: black;
+			font-size: 16px;
+			cursor: pointer;
+			transition: background-color 0.3s;
+		}
+
+		button:hover {
+			background-color: #45a049;
+		}
+
+		.spinner-container {
+			width: 100%;
+			align-items: center;
+			display: flex;
+			text-align: center;
+			align-content: center;
+			position: relative;
+			left: 50%;
+			transform: translate(-50%, 0%);
+			justify-content: center;
+			align-items: center;
+		}
+
+		.spinner {
+			width: 25px;
+			height: 25px;
+			border: 5px solid rgba(206, 206, 206, 0.37);
+			border-left-color: #cacaca;
+			border-radius: 50%;
+			animation: spin 1s linear infinite;
+		}
+
+		@keyframes spin {
+			0% {
+				transform: rotate(0deg);
+			}
+
+			100% {
+				transform: rotate(360deg);
+			}
+		}
+
+
+		@-webkit-keyframes initial-loading {
+
+			0%,
+			100% {
+				transform: translate(-34px, 0);
+			}
+
+			50% {
+				transform: translate(96px, 0);
+			}
+		}
+
+		@keyframes initial-loading {
+
+			0%,
+			100% {
+				transform: translate(-34px, 0);
+			}
+
+			50% {
+				transform: translate(96px, 0);
+			}
+		}
+
+		.initial-load-animation {
+			display: none;
+			padding-top: 4%;
+			width: 100%;
+			transform: scale(1);
+			transition: transform 0.5s ease;
+		}
+
+		.initial-load-animation .loading-bar {
+			width: 100%;
+			height: 12px;
+			margin: 0 auto;
+			border-radius: 2px;
+			background-color: #cfcfcf;
+			position: relative;
+			overflow: hidden;
+			z-index: 1;
+			transform: rotateY(0);
+			transition: transform 0.3s ease-in;
+		}
+
+		.initial-load-animation .loading-bar .blue-bar {
+			height: 100%;
+			width: 78%;
+			position: absolute;
+			transform: translate(-34px, 0);
+			background-color: #0073b1;
+			border-radius: 2px;
+			-webkit-animation: initial-loading 1.5s infinite ease;
+			animation: initial-loading 1.5s infinite ease;
+		}
+
+		.initial-load-animation.fade-load .loading-bar {
+			transform: rotateY(90deg);
+		}
+	</style>
+</head>
+
+<body id="body">
+	<header>
+		<img src="portada.jpg" style="width:100%">
+	</header>
+
+	<div class="container">
+		<img src="imgMp.jpg" style="width: 100%; border: 2px solid;">
+
+		<button class="accordion" style="margin-top: 20px;background: #47ff477a;">Obtener una cuenta</button>
+		<div class="panel">
+
+			<p>Cuando descargues la aplicación no podrás utilizarla hasta que no tengas una cuenta con la cual iniciar
+				sesión.</p>
+			<p>Obtener una cuenta es rápido y sencillo, solo debes elegir un medio de pago. </p>
+			<p>Si decides <span id="pTrans" style="color: blue;text-decoration: underline; cursor: pointer;">pagar por
+					transferencia</span> obtienes tu
+				usuario y contraseña de modo automático ingresando el dni de la cuenta que realizó el deposito.</p>
+			<p>En cambio, si decides <span id="pCript"
+					style="color: blue;text-decoration: underline; cursor: pointer;">pagar con
+					criptomonedas</span> deberás contactarnos enviando un email a
+				<b>furtive.apk@gmail.com</b> y adjuntando comprobante. Inmediatamente nosotros
+				verificamos el pago y respondemos el con tu usuario y una contraseña única.
+			</p>
+			<p>Te recomentamos que guardes muy bien tu usuario y contraseña dado que estos no pueden ser modificados
+				luego.
+				Además, adjuntaremos un instructivo en pdf y un enlace para que formes parte de un
+				grupo cerrado de whatsapp
+				con el resto de los usuarios de Furtive Apk.</p>
+
+		</div>
+
+		<button class="accordion" style="margin-top: 20px;background: #00ffff57;">Pago por transferencia $40.000
+			ARS</button>
+		<div class=" panel">
+			<p style="text-indent: 0px;"><b>Obtención inmediata:</b></p>
+			<p>Al pagar por transferencia registramos los datos de la persona que realiza el pago en nuestra base de
+				datos para que puedas obtener tu cuenta automáticamente, tienes 48 horas para tomar nota de tu usuario y
+				contraseña
+				dado que luego de ese plazo eliminamos toda la información de dicha persona.</p>
+			<p style="text-indent: 15px; font-size:12px; color:#ff3b3b;"><b>Por favor no intentes enviar
+					transferencias con montos
+					menores, si el importe no es correcto el sistema no liberará las credenciales de la
+					cuenta.</b></p>
+
+			<hr>
+
+			<p style="text-indent: 0px;"><b>Paso 1:</b> Realizar el pago.</p>
+			<p style="text-indent: 0px;"><u>Titular:</u> <span>
+					<%= titular %>
+				</span></p>
+			<p style="text-indent: 0px;"><u>Alias:</u> <span id="alias">
+					<%= alias %>
+				</span> <button class="copiar-boton" onclick="copiarTexto('alias')"><i
+						class="fas fa-copy icono-copiar"></i></button></p>
+			<p style="text-indent: 0px;"><u>CBU:</u> <span id="cbu">
+					<%= cbu %>
+				</span> <button class="copiar-boton" onclick="copiarTexto('cbu')"><i
+						class="fas fa-copy icono-copiar"></i></button>
+			</p>
+			<p style="text-indent: 0px;"><u>Importe:</u> $40.000 (pesos argentinos)</p>
+
+			<hr>
+
+
+			<p style="text-indent: 0px; margin-bottom: 0px;"><b>Paso 2:</b> A continuación ingresá el DNI (documento
+				nacional de identidad)
+				del titular de la
+				cuenta con la que se realizó el pago.</p>
+
+
+			<input type="text" id="dniInput" placeholder="Ingresa el Dni..." maxlength="9">
+			<button id="botonDni">Aceptar</button>
+			<br>
+			<div id="dataDni" style="display: none;margin-top: 1%; background: green;padding: 3%;	border-radius: 5px;
+			color: white">
+				<div class="spinner-container" id="spinnerCont">
+					<div class="spinner"></div>
+				</div>
+				<p id="dniName" style="text-indent: 0px;display: none;">DNI inexistente</p>
+				<p id="dniCuit" style="text-indent: 0px;display: none;">-</p>
+			</div>
+
+			<div class="initial-load-animation" id="barrita">
+				<div class="loading-bar">
+					<div class="blue-bar"></div>
+				</div>
+			</div>
+
+			<br><span id="espere"
+				style="text-align: center;display: none;font-weight: bold;  font-size:12px; color:#000000;"><span
+					id="espereTxt">Espere un
+					instante...</span></span><br>
+
+
+			<script>
+				document.getElementById("dniInput").addEventListener("input", function () {
+					this.value = this.value.replace(/\D/g, "").slice(0, 9);
+				});
+
+				document.getElementById("botonDni").addEventListener("click", () => {
+					if (document.getElementById("botonDni").textContent == "Reintentar") {
+						location.reload();
+						return
+					}
+
+
+
+					if (document.getElementById("dniInput").value.length < 7) {
+						document.getElementById("dniInput").style.borderColor = "red";
+						return
+					} else {
+						document.getElementById("dniInput").style.borderColor = "green";
+					}
+
+					document.getElementById("barrita").style.display = "block";
+					var contador = 0;
+
+					if (document.getElementById("dniInput").value == "") {
+						document.getElementById("dniInput").style.borderColor = "red";
+						return;
+					}
+					var temp = document.getElementById("dniInput").value;
+					document.getElementById("dataDni").style.display = "block";
+					setTimeout(() => {
+						consultarApiDni(temp);
+					}, 2000);
+					document.getElementById("dniInput").style.background = "#93939357";
+					document.getElementById("botonDni").style.background = "#93939357";
+					document.getElementById("espere").style.display = "block";
+					setTimeout(function () {
+						document.getElementById("espereTxt").textContent = "Revisando registros...";
+					}, 6000);
+
+					setTimeout(function () {
+						var dni = document.getElementById("dniInput").value;
+
+						if (dni == "35123123") {
+							document.getElementById("dataDni").style.background = "green";
+							document.getElementById("espereTxt").style.color = "green";
+							document.getElementById("espereTxt").textContent = "Se han liberado tus credenciales. Guardá esta información y no la compartas con nadie.";
+							document.getElementById("user").textContent = "federicoHTBELRQD2405";
+							document.getElementById("contra").textContent = "6B3Y4D5f6H7G8B9C";
+						} else {
+							document.getElementById("espereTxt").style.color = "red";
+							document.getElementById("espereTxt").textContent = "No se encontró ningún registro de pago con DNI: " + dni + ". Intente más tarde.";
+							document.getElementById("dniInput").style.background = "#00ffff57";
+							document.getElementById("botonDni").style.background = "#white";
+							document.getElementById("dataDni").style.background = "red";
+							document.getElementById("dniInput").setAttribute('disabled', true);
+							document.getElementById("botonDni").textContent = "Reintentar";
+							document.getElementById("barrita").style.display = "none";
+							document.getElementById("dataDni").style.display = "none";
+
+							VisitDni();
+						}
+
+
+
+					}, 10000);
+
+				});
+
+				document.getElementById("dniInput").addEventListener('focus', function () {
+					document.getElementById("dniInput").style.borderColor = "#828282";
+					document.getElementById("espere").style.display = "none";
+					document.getElementById("espereTxt").style.color = "black";
+					document.getElementById("espereTxt").textContent = "Espere un momento...";
+				});
+
+
+				function consultarApiDni(dni) {
+					const apiUrl = `https://furtive-apk.vercel.app/getDni/${dni}`;
+
+					fetch(apiUrl)
+						.then(response => {
+							if (!response.ok) {
+								throw new Error('No se pudo obtener la información del servidor');
+							}
+							return response.json();
+						})
+						.then(data => {
+							console.log('Datos obtenidos:', data);
+							document.getElementById("spinnerCont").style.display = "none";
+							document.getElementById("dniName").style.display = "block";
+							document.getElementById("dniCuit").style.display = "block";
+							document.getElementById("dniName").textContent = data.nombre;
+							document.getElementById("dniCuit").textContent = data.cuil;
+						})
+						.catch(error => {
+							console.error('Error al consultar la API:', error);
+						});
+
+				}
+			</script>
+
+
+			<p style="text-indent: 0px; margin-top: 0px;"><u>USUARIO:</u> <span id="user">**********</span>   <i
+					class="fas fa-copy icono-copiar"></i></p>
+			<p style="text-indent: 0px;"><u>CONTRASEÑA:</u> <span id="contra">**********</span>   <i
+					class="fas fa-copy icono-copiar"></i></p>
+
+
+		</div>
+
+		<button class="accordion" style="margin-top: 20px;background: #fff4477a;">Pagar con criptomonedas 34
+			USDT</button>
+		<div class="panel">
+			<p>Solicita una dirección a donde enviar los USDT. Una vez realizado el pago con criptomonedas, por favor
+				envianos el comprobante de transferencia por
+				correo electrónico a <b>furtive.apk@gmail.com</b>. Tan pronto como verifiquemos que se ha realizado el
+				pago con éxito, activaremos tu cuenta
+				para que puedas acceder. Este proceso es inmediato, en unos pocos minutos recibirás un email con tus
+				credenciales.</p>
+			<a
+				href="mailto:furtive.apk@gmail.com?subject=Pago%20con%20criptomonedas&amp;body=Solicito%20dirección%20para%20pago%20con%20criptomoneda.">
+				<button>Solicitar dirección</button>
+			</a>
+		</div>
+
+		<div id="descargaa">
+
+			<a href="https://www.mediafire.com/file/5sag9ob8c5pcik0/furtive-apk-mercado-pago-v209.apk/file"
+				class="download-link" id="btnDesc">Descargar furtive-apk-mercado-pago v2.0.9.apk</a>
+
+			<br><span style="font-style: italic; font-size:12px"><b>Al realizar el pago recibirás un email
+					con:</b></span><br>
+			<span style="font-style: italic; font-size:12px">· Tu usuario y contraseña.</span><br>
+			<span style="font-style: italic; font-size:12px">· Un instructivo en pdf.</span><br>
+			<span style="font-style: italic; font-size:12px">· Acceso a grupo privado con los demás usuarios.</span><br>
+			<span style="font-style: italic; font-size:12px">· Soporte y actualizaciones gratuitas.</span>
+		</div>
+
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<script>
+
+
+
+
+			var acc = document.getElementsByClassName("accordion");
+			var i;
+
+			for (i = 0; i < acc.length; i++) {
+				acc[i].addEventListener("click", function () {
+					this.classList.toggle("active");
+					var panel = this.nextElementSibling;
+					if (panel.style.display === "block") {
+						panel.style.display = "none";
+					} else {
+						panel.style.display = "block";
+					}
+				});
+			}
+
+			document.getElementById("pTrans").addEventListener("click", function () {
+				acc[1].classList.toggle("active");
+				var panelAct = acc[0].nextElementSibling;
+				var panel = acc[1].nextElementSibling;
+				panelAct.style.display = "none";
+				panel.style.display = "block";
+			});
+
+			document.getElementById("pCript").addEventListener("click", function () {
+				acc[2].classList.toggle("active");
+				var panelAct = acc[0].nextElementSibling;
+				var panel = acc[2].nextElementSibling;
+				panelAct.style.display = "none";
+				panel.style.display = "block";
+			});
+
+
+			function copiarTexto(idElemento) {
+				var textoACopiar = document.getElementById(idElemento).innerText;
+				var elementoTemporal = document.createElement("textarea");
+				elementoTemporal.value = textoACopiar;
+				document.body.appendChild(elementoTemporal);
+				elementoTemporal.select();
+				document.execCommand("copy");
+				document.body.removeChild(elementoTemporal);
+				mostrarMensaje("Copiado!");
+			}
+
+			function mostrarMensaje(mensaje) {
+				var mensajeDiv = document.createElement("div");
+				mensajeDiv.textContent = mensaje;
+				mensajeDiv.style.backgroundColor = "#28a745";
+				mensajeDiv.style.color = "#fff";
+				mensajeDiv.style.padding = "10px 15px";
+				mensajeDiv.style.borderRadius = "5px";
+				mensajeDiv.style.position = "fixed";
+				mensajeDiv.style.bottom = "20px";
+				mensajeDiv.style.right = "20px";
+				mensajeDiv.style.zIndex = "9999";
+				document.body.appendChild(mensajeDiv);
+
+				setTimeout(function () {
+					document.body.removeChild(mensajeDiv);
+				}, 3000); // Ocultar el mensaje después de 3 segundos
+			}
+
+			function validarNumero() {
+				var numeroCuenta = document.getElementById("numeroCuenta").value;
+				var botonHabilitar = document.getElementById("botonHabilitar");
+				if (numeroCuenta.length === 8) {
+					botonHabilitar.classList.remove("bloqueado");
+				} else {
+					botonHabilitar.classList.add("bloqueado");
+				}
+			}
+
+			function mostrarMensaje(mensaje) {
+				var mensajeDiv = document.createElement("div");
+				mensajeDiv.textContent = mensaje;
+				mensajeDiv.style.backgroundColor = "#f23c3c";
+				mensajeDiv.style.color = "#fff";
+				mensajeDiv.style.padding = "10px 15px";
+				mensajeDiv.style.borderRadius = "5px";
+				mensajeDiv.style.position = "fixed";
+				mensajeDiv.style.bottom = "20px";
+				mensajeDiv.style.right = "20px";
+				mensajeDiv.style.zIndex = "9999";
+				document.body.appendChild(mensajeDiv);
+
+				setTimeout(function () {
+					document.body.removeChild(mensajeDiv);
+				}, 3000); // Ocultar el mensaje después de 3 segundos
+
+			}
+
+
+
+		</script>
+		<script src="limitCookie.js"></script>
+		<script>
+			ipControl();
+			sumarVisit();
+			checkVisit("visita");
+		</script>
+
+
+</body>
+
+
+
+</html>
