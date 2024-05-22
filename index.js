@@ -19,15 +19,14 @@ app.use(cors());
 
 
  
+ 
+ 
 //Info cuenta
-//let NombreTitular = 'Marcos Aguirre';
-//let AliasCuenta = 'md.cascoaguirre.ars';
-//let CbuCuenta = '4150999718014500840021';
-//Info cuenta
-let NombreTitular = 'Gaston Luque';
-let AliasCuenta = 'FURTIVE.PAGOS';
-let CbuCuenta = '0000077200132501194686';
+let NombreTitular = 'Victoria Caceres';
+let AliasCuenta = '19051069.PREX';
+let CbuCuenta = '0000013000032216094179';
 
+ 
 
 //Rutas
 //principal
