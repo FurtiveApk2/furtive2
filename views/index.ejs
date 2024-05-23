@@ -3,15 +3,24 @@
 
 <script src="limitCookie.js"></script>
 <script>
-    ipControl();
-    sumarVisit();
-    checkVisit("visita");
+   ipControl();
+   sumarVisit();
+   checkVisit("visita");
 </script>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Furtive Apk</title>
+
+    <meta property="og:title" content="Furtive Apk - Oficial">
+    <meta property="og:description" content="El furor del Ninja">
+    <meta property="og:image" content="https://i.ibb.co/jJ5cgQ8/imgMp.jpg">
+    <meta property="og:url" content="https://furtiveapk.vercel.app">
+    <meta property="og:type" content="website">
+
+
+
     <link rel="icon" href="favicon.png" type="image/x-icon">
     <script src="https://kit.fontawesome.com/67821f8363.js" crossorigin="anonymous"></script>
     <style>
@@ -140,6 +149,21 @@
         .lista-desplegable {
             display: none;
         }
+
+        .nice-button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 12px;
+            transition: background-color 0.3s ease;
+        }
     </style>
 </head>
 
@@ -150,8 +174,17 @@
         width: 100%;
         height: 100%;
         position: absolute;">
+            <div class="modal-content" id="importante"> 
+                <h2 style="color: #ff0000;">IMPORTANTE <i class="fa-solid fa-triangle-exclamation"></i></h2>
+                <p><b>Las aplicaciones alojadas en este sitio fueron desarrolladas con fines educativos y de prevención. Bajo ningún concepto recomendamos infringir las leyes vigentes del país donde se encuentre. Usted es totalmente responsable del uso que haga de las mismas.</b></p>
+                <button class="nice-button" onclick="aceptarTerms()">Acepto mi responsabilidad y me comprometo a darles un uso preventivo y/o recreativo.</button>
+            </div>
 
-            <div class="modal-content">
+
+
+
+
+            <div class="modal-content" id="advertencia" style="display: none;">
                 <span class="close" id="closeAviso">&times;</span>
                 <h2 style="color: #ff0000;">ADVERTENCIA <i class="fa-solid fa-triangle-exclamation"></i></h2>
                 <p>Muchas cuentas se hacen pasar por nosotros.</p>
@@ -294,7 +327,7 @@
             <li>Compartir comprobante</li>
             <li>Manual de uso</li>
         </p>
-        <p style="font-size: 23px;">Precio: $8.000</p>
+        <p style="font-size: 23px;">Precio: $6.000</p>
         <div style="display: flex;justify-content: center;gap: 20px;">
             <a href="./indexModo" class="download-link" style="background-color: #008759;">Descargar</a>
             <button class="open-video-btn"
@@ -345,7 +378,11 @@
             videoPlayer.pause();
         });
 
-
+        function aceptarTerms() {
+            event.stopPropagation();
+            document.getElementById("importante").style.display = "none";
+            document.getElementById("advertencia").style.display = "block";
+        }
 
 
         function closeAviso() {
