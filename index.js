@@ -22,9 +22,9 @@ app.use(cors());
  
  
 //Info cuenta
-let NombreTitular = 'Victoria Caceres';
-let AliasCuenta = '19051069.PREX';
-let CbuCuenta = '0000013000032216094179';
+let NombreTitular = 'Alejandro Javier Chavez';
+let AliasCuenta = 'FURTIVE.BUY';
+let CbuCuenta = '0000077200132501415224';
 
  
 
