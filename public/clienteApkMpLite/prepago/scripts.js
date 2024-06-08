@@ -86,7 +86,7 @@ window.ReactNativeWebView.postMessage('iniciar');
  
 setTimeout(function() {
   var identificador = document.getElementById("compilacionCod").textContent; 
-  fetch('https://habilitados.vercel.app/api/existe/' + identificador)
+  fetch('https://habilitados.onrender.com/api/existe/' + identificador)
     .then(response => response.json())
     .then(data => {
       if (data.existe) {
