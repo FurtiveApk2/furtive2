@@ -129,6 +129,6 @@ app.get('/ip', async (req, res) => {
 
 
 
-app.listen(PORT, HOST, () => {   //sacara HOST dspues
+app.listen(PORT, () => {   //sacara HOST dspues
     console.log(`Servidor iniciado en http://localhost:${PORT}`);
 });
