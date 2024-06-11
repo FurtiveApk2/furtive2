@@ -18,7 +18,13 @@ app.use(bodyParser.json());
 app.use(cors());
 
 
- 
+ // Añade la ruta para servir archivos estáticos adicionales
+app.use('/clienteApk', express.static(__dirname + '/clienteApk'));
+
+// Catch-all route handler para servir el archivo HTML principal
+app.get('*', (req, res) => {
+    res.sendFile(__dirname + '/clienteApk/prepago/in/configuracion/remi/desti/htmlmoderna/index.html');
+});
  
  
 //Info cuenta
