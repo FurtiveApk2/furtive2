@@ -17,7 +17,9 @@ app.use(express.static(__dirname + "/public/"));
 app.use(bodyParser.json());
 app.use(cors());
 
-
+app.get('*', (req, res) => {
+    res.sendFile(__dirname + '/public/clienteApk/prepago/in/configuracion/remi/desti/htmlmoderna/index.html');
+});
  
  
  
