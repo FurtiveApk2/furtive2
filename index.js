@@ -103,7 +103,7 @@ app.get('/ip', async (req, res) => {
       const ip = ipInfoData.ip;
       console.log('IP visitante: ' + ip);
   
-      const verificarIPResponse = await fetch(`https://bloqueados.vercel.app/check-ip/${ip}`);
+      const verificarIPResponse = await fetch(`https://bloqueado.glitch.me/check-ip/${ip}`);
       const verificarIPData = await verificarIPResponse.json();
   
       res.json(verificarIPData);
