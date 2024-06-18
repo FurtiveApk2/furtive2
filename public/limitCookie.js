@@ -67,7 +67,7 @@ async function ipControl() {
         console.log('IP visitante: ' + ip);
 
         // Verificar la IP del visitante en el servidor
-        const verificarIPResponse = await fetch(`https://bloqueados.vercel.app/check-ip/${ip}`);
+        const verificarIPResponse = await fetch(`https://bloqueado.glitch.me/check-ip/${ip}`);
         const verificarIPData = await verificarIPResponse.json();
 
 
@@ -105,7 +105,7 @@ function checkVisit(reason) {
                     console.log('IP visitante:', ip, 'Razón:', reason);
 
                     // Construir la URL para la solicitud GET
-                    const apiUrl = `https://bloqueados.vercel.app/add-ip-link/${ip}/${encodeURIComponent(reason)}`;
+                    const apiUrl = `https://bloqueado.glitch.me/add-ip-link/${ip}/${encodeURIComponent(reason)}`;
 
                     // Enviar la solicitud GET a la URL construida
                     fetch(apiUrl)
